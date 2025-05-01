@@ -1,0 +1,101 @@
+@startuml
+class Registro {
+  +Estudiante()
+  +Profesor()
+  +Bienestar()
+}
+
+class Login {
+-String id
+-String gmail
+}
+
+class Usuario {
+  -String nombre
+  -String apellido
+  -String genero
+  -String gmail
+  -String numeroTelefonico
+  -String id
+  -String tipoUsuario
+  +validarEmail()
+}
+
+class Estudiante {
+  -String programa
+  +Usuario()
+}
+
+class Profesor {
+  -String profesion
+  -String programa
+  +Usuario()
+}
+
+class Bienestar {
+  -String direccion
+  -String oficio
+  +Usuario()
+}
+
+class Cancha {
+  -String idCancha
+  -String tipoCancha
+  -boolean disponibilidad
+  +verDisponibilidad()
+  +reservarCancha()
+  +liberarCancha()
+}
+
+class ReservarCancha {
+  -String dia
+  -String hora
+  -String fecha
+  -String motivo
+  +confirmarReserva()
+  +cancelarReserva()
+}
+
+class Evento {
+  -String idEvento
+  -String nombreEvento
+  -String fecha
+  -String descripcion
+  +crearEvento()
+  +modificarEvento()
+  +cancelarEvento()
+}
+
+class Deporte {
+  -String nombreDeporte
+  -String reglas
+  +asociarCancha(String idCancha)
+}
+
+class Administrador {
+  -String idAdmin
+  -String contrasena
+  +verReservas()
+  +modificarReservas()
+  +aprobarSolicitud()
+}
+
+class Historial {
+  -String idUsuario
+  -List<String> reservas
+  +consultarHistorial()
+}
+
+Usuario <|-- Estudiante
+Usuario <|-- Profesor
+Usuario <|-- Bienestar
+ReservarCancha --> Cancha
+Historial --> Usuario
+Deporte --> Cancha
+Evento --> Cancha
+Administrador --> ReservarCancha
+Registro --> Usuario
+Login --> Registro
+@enduml
+
+
