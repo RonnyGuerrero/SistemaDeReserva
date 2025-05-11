@@ -1,4 +1,5 @@
 @startuml
+<<<<<<< HEAD
 skinparam classFontSize 12
 skinparam classAttributeFontSize 11
 
@@ -21,6 +22,17 @@ class Login {
   -String contrasena
   +autenticar() : boolean
   +recuperarContrasena() : boolean
+=======
+class Registro {
+  +Estudiante()
+  +Profesor()
+  +Bienestar()
+}
+
+class Login {
+-String id
+-String gmail
+>>>>>>> e36979a6ff7d019a6174fff47063ccf062119d39
 }
 
 class Usuario {
@@ -31,39 +43,56 @@ class Usuario {
   -String numeroTelefonico
   -String id
   -String tipoUsuario
+<<<<<<< HEAD
   +validarEmail() : boolean
   +actualizarPerfil() : boolean
+=======
+  +validarEmail()
+>>>>>>> e36979a6ff7d019a6174fff47063ccf062119d39
 }
 
 class Estudiante {
   -String programa
+<<<<<<< HEAD
   -String semestre
   -String facultad
   +solicitarReserva(Cancha, Fecha) : ReservarCancha
   +consultarReservas() : List<ReservarCancha>
   +cancelarReserva(ReservarCancha) : boolean
+=======
+  +Usuario()
+>>>>>>> e36979a6ff7d019a6174fff47063ccf062119d39
 }
 
 class Profesor {
   -String profesion
   -String programa
+<<<<<<< HEAD
   -String facultad
   +solicitarReserva(Cancha, Fecha) : ReservarCancha
   +consultarReservas() : List<ReservarCancha>
   +cancelarReserva(ReservarCancha) : boolean
+=======
+  +Usuario()
+>>>>>>> e36979a6ff7d019a6174fff47063ccf062119d39
 }
 
 class Bienestar {
   -String direccion
   -String oficio
+<<<<<<< HEAD
   -String departamento
   +crearEvento(Cancha, Fecha) : Evento
   +gestionarEvento(Evento) : boolean
   +asignarRecursos(Evento) : boolean
+=======
+  +Usuario()
+>>>>>>> e36979a6ff7d019a6174fff47063ccf062119d39
 }
 
 class Cancha {
   -String idCancha
+<<<<<<< HEAD
   -String nombre
   -String tipoCancha
   -int capacidad
@@ -84,11 +113,28 @@ class ReservarCancha {
   +confirmarReserva() : boolean
   +cancelarReserva() : boolean
   +modificarReserva(Fecha) : boolean
+=======
+  -String tipoCancha
+  -boolean disponibilidad
+  +verDisponibilidad()
+  +reservarCancha()
+  +liberarCancha()
+}
+
+class ReservarCancha {
+  -String dia
+  -String hora
+  -String fecha
+  -String motivo
+  +confirmarReserva()
+  +cancelarReserva()
+>>>>>>> e36979a6ff7d019a6174fff47063ccf062119d39
 }
 
 class Evento {
   -String idEvento
   -String nombreEvento
+<<<<<<< HEAD
   -Date fecha
   -String descripcion
   -int participantesEstimados
@@ -105,11 +151,25 @@ class Deporte {
   -int jugadoresRequeridos
   +asociarCancha(String idCancha) : boolean
   +getReglamento() : String
+=======
+  -String fecha
+  -String descripcion
+  +crearEvento()
+  +modificarEvento()
+  +cancelarEvento()
+}
+
+class Deporte {
+  -String nombreDeporte
+  -String reglas
+  +asociarCancha(String idCancha)
+>>>>>>> e36979a6ff7d019a6174fff47063ccf062119d39
 }
 
 class Administrador {
   -String idAdmin
   -String contrasena
+<<<<<<< HEAD
   -NivelAcceso nivel
   +verReservas() : List<ReservarCancha>
   +modificarReservas(ReservarCancha) : boolean
@@ -220,3 +280,29 @@ Administrador --> "*" Reporte : genera >
 Cancha --> "*" Fecha : disponible en >
 
 @enduml
+=======
+  +verReservas()
+  +modificarReservas()
+  +aprobarSolicitud()
+}
+
+class Historial {
+  -String idUsuario
+  -List<String> reservas
+  +consultarHistorial()
+}
+
+Usuario <|-- Estudiante
+Usuario <|-- Profesor
+Usuario <|-- Bienestar
+ReservarCancha --> Cancha
+Historial --> Usuario
+Deporte --> Cancha
+Evento --> Cancha
+Administrador --> ReservarCancha
+Registro --> Usuario
+Login --> Registro
+@enduml
+
+
+>>>>>>> e36979a6ff7d019a6174fff47063ccf062119d39
