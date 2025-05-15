@@ -18,7 +18,7 @@ public class UsuarioDAO {
         // Lógica para eliminar usuario
         return true;
     }
-
+    
     public Usuario obtenerUsuarioPorId(String idUsuario) {
         // Lógica para obtener usuario por ID
         return null;
@@ -29,8 +29,5 @@ public class UsuarioDAO {
         return null;
     }
 
-    public boolean cambiarContrasena(String idUsuario, String nuevaContrasena) {
-        // Lógica para cambiar contraseña
-        return true;
-    }
+    
 }
