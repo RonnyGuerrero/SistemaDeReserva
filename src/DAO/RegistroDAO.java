@@ -149,13 +149,5 @@ public class RegistroDAO {
         
     }
 
-    public boolean validarDatos(Usuario usuario) {
-        // Lógica para validar datos antes de registrar
-        return true;
-    }
-
-    public boolean existeUsuario(String id) {
-        // Lógica para verificar si el usuario ya existe
-        return false;
-    }
+   
 }

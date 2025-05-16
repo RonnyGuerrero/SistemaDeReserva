@@ -1,36 +1,62 @@
 package DAO;
 
 import Model.Deporte;
-import java.util.List;
+import java.io.*;
+import java.util.*;
+import java.util.stream.*;
 
 public class DeporteDAO {
-    public boolean agregarDeporte(Deporte deporte) {
-        // Lógica para agregar deporte
-        return true;
+    private static final String DIRECTORIO = "data/deportes/";
+    private static final String ARCHIVO_MAESTRO = DIRECTORIO + "deportes.txt";
+    
+    public DeporteDAO() {
+        new File(DIRECTORIO).mkdirs();
     }
-
-    public boolean actualizarDeporte(Deporte deporte) {
-        // Lógica para actualizar deporte
-        return true;
+    
+    public boolean registrarDeporte(Deporte deporte) {
+        if (deporte == null || deporte.getIdDeporte() == null) return false;
+        
+        try (PrintWriter pw = new PrintWriter(new FileWriter(ARCHIVO_MAESTRO, true))) {
+            pw.println(String.join("|", 
+                deporte.getIdDeporte(),
+                deporte.getNombreDeporte(),
+                String.valueOf(deporte.getJugadoresRequeridos()),
+                deporte.getReglas()
+            ));
+            return true;
+        } catch (IOException e) {
+            System.err.println("Error registrando deporte: " + e.getMessage());
+            return false;
+        }
     }
-
-    public boolean eliminarDeporte(String idDeporte) {
-        // Lógica para eliminar deporte
-        return true;
-    }
-
-    public Deporte obtenerDeportePorId(String idDeporte) {
-        // Lógica para obtener deporte por ID
-        return null;
-    }
-
+    
     public List<Deporte> listarTodosDeportes() {
-        // Lógica para listar todos los deportes
-        return null;
+        List<Deporte> deportes = new ArrayList<>();
+        
+        try (BufferedReader br = new BufferedReader(new FileReader(ARCHIVO_MAESTRO))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] partes = linea.split("\\|");
+                if (partes.length >= 4) {
+                    Deporte d = new Deporte();
+                    d.setIdDeporte(partes[0]);
+                    d.setNombreDeporte(partes[1]);
+                    d.setJugadoresRequeridos(Integer.parseInt(partes[2]));
+                    d.setReglas(partes[3]);
+                    deportes.add(d);
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error leyendo deportes: " + e.getMessage());
+        }
+        
+        return deportes;
     }
-
-    public boolean asociarCanchaDeporte(String idDeporte, String idCancha) {
-        // Lógica para asociar cancha a deporte
-        return true;
+    
+    public Deporte obtenerDeporte(String idDeporte) {
+        return listarTodosDeportes().stream()
+            .filter(d -> d.getIdDeporte().equals(idDeporte))
+            .findFirst()
+            .orElse(null);
     }
 }

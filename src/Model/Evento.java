@@ -6,45 +6,35 @@ import java.util.List;
 public class Evento {
     private String idEvento;
     private String nombreEvento;
-    private Date fecha;
+    private Date fechaInicio;
+    private Date fechaCierre;
     private String descripcion;
-    private int participantesEstimados;
-    private Cancha cancha;
-    private List<Usuario> participantes;
+    private String participantes;
+    private Usuario organizador;
+    
+    public String getParticipantes() {
+        return participantes;}
 
-    public boolean crearEvento() {
-        // Lógica para crear evento
-        return true;
-    }
-
-    public boolean modificarEvento() {
-        // Lógica para modificar evento
-        return true;
-    }
-
-    public boolean cancelarEvento() {
-        // Lógica para cancelar evento
-        return true;
-    }
-
-    public boolean invitarParticipantes(List<Usuario> invitados) {
-        // Lógica para invitar participantes
-        return true;
-    }
+    public void setParticipantes(String participantes) {
+        this.participantes = participantes;}
+    
 
     // Getters y Setters
     public String getIdEvento() { return idEvento; }
     public void setIdEvento(String idEvento) { this.idEvento = idEvento; }
+    
     public String getNombreEvento() { return nombreEvento; }
     public void setNombreEvento(String nombreEvento) { this.nombreEvento = nombreEvento; }
-    public Date getFecha() { return fecha; }
-    public void setFecha(Date fecha) { this.fecha = fecha; }
+    
+    public Date getFechaInicio() { return fechaInicio; }
+    public void setFechaInicio(Date fecha) { this.fechaInicio = fecha; }
+    
+    public Date getFechaCierre() { return fechaCierre; }
+    public void setFechaCierre(Date fecha) { this.fechaCierre = fecha; }
+    
     public String getDescripcion() { return descripcion; }
     public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
-    public int getParticipantesEstimados() { return participantesEstimados; }
-    public void setParticipantesEstimados(int participantesEstimados) { this.participantesEstimados = participantesEstimados; }
-    public Cancha getCancha() { return cancha; }
-    public void setCancha(Cancha cancha) { this.cancha = cancha; }
-    public List<Usuario> getParticipantes() { return participantes; }
-    public void setParticipantes(List<Usuario> participantes) { this.participantes = participantes; }
+    
+    public Usuario getOrganizador() { return organizador; }
+    public void setOrganizador(Usuario organizador) { this.organizador = organizador; }
 }

@@ -6,6 +6,7 @@ package Interfaz;
 import DAO.*;
 import Model.*;
 import java.util.HashSet;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Usuario
@@ -76,11 +77,10 @@ RegistroDAO registro= new RegistroDAO();
         txtDireccionbienestar = new javax.swing.JTextField();
         txtCelularbienestar = new javax.swing.JTextField();
         login = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txtIDLogin = new javax.swing.JTextField();
+        txtGmailLogin = new javax.swing.JTextField();
+        btnRegistrarUsuario = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("REGISTRO"));
 
@@ -482,63 +482,60 @@ RegistroDAO registro= new RegistroDAO();
 
         login.setBorder(javax.swing.BorderFactory.createTitledBorder("SISTEMA DE SOLICITUD"));
 
-        jTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder("ID"));
+        txtIDLogin.setBorder(javax.swing.BorderFactory.createTitledBorder("ID"));
 
-        jTextField2.setBorder(javax.swing.BorderFactory.createTitledBorder("GMAIL:"));
+        txtGmailLogin.setBorder(javax.swing.BorderFactory.createTitledBorder("GMAIL:"));
 
-        jButton1.setText("REGISTRAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrarUsuario.setText("REGISTRAR");
+        btnRegistrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegistrarUsuarioActionPerformed(evt);
             }
         });
 
-        jButton2.setText("INICIAR");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seleccionar", "estudiante", "profesor", "bienestar" }));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createTitledBorder("TIPO DE USUARIO"));
+        btnLogin.setText("INICIAR");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout loginLayout = new javax.swing.GroupLayout(login);
         login.setLayout(loginLayout);
         loginLayout.setHorizontalGroup(
             loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginLayout.createSequentialGroup()
-                .addContainerGap(135, Short.MAX_VALUE)
+                .addContainerGap(149, Short.MAX_VALUE)
                 .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnRegistrarUsuario)
                         .addGap(160, 160, 160))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(btnLogin)
                         .addGap(170, 170, 170))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(115, 115, 115))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(103, 103, 103))))
+                        .addComponent(txtIDLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(115, 115, 115))))
             .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
                     .addContainerGap(150, Short.MAX_VALUE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtGmailLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(114, 114, 114)))
         );
         loginLayout.setVerticalGroup(
             loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginLayout.createSequentialGroup()
                 .addGap(106, 106, 106)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(txtIDLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addComponent(btnLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(btnRegistrarUsuario)
                 .addContainerGap())
             .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(loginLayout.createSequentialGroup()
                     .addGap(33, 33, 33)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtGmailLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(268, Short.MAX_VALUE)))
         );
 
@@ -556,11 +553,11 @@ RegistroDAO registro= new RegistroDAO();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarUsuarioActionPerformed
         // TODO add your handling code here:
         Registro.setVisible(true);
         Registro.setSize(269, 200);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRegistrarUsuarioActionPerformed
 
     private void comboTipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoUsuarioActionPerformed
         // TODO add your handling code here:
@@ -622,6 +619,8 @@ RegistroDAO registro= new RegistroDAO();
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
       registrarEstudiante();
+      Estudiante.dispose();
+      Registro.dispose();
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -637,6 +636,10 @@ registrarBienestar();
 BienestarDialogo.dispose();
 Registro.dispose();
     }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        login();
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -678,23 +681,20 @@ Registro.dispose();
     private javax.swing.JDialog Estudiante;
     private javax.swing.JDialog Profesor;
     private javax.swing.JDialog Registro;
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnRegistrarUsuario;
     private javax.swing.JComboBox<String> comboTipoUsuario;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel login;
     private javax.swing.JTextField txtApellidobienestar;
     private javax.swing.JTextField txtApellidoestudiante;
@@ -709,9 +709,11 @@ Registro.dispose();
     private javax.swing.JTextField txtGenerobienestar;
     private javax.swing.JTextField txtGeneroestudiante;
     private javax.swing.JTextField txtGeneroprofesor;
+    private javax.swing.JTextField txtGmailLogin;
     private javax.swing.JTextField txtGmailbienestar;
     private javax.swing.JTextField txtGmailestudiante;
     private javax.swing.JTextField txtGmailprofesor;
+    private javax.swing.JTextField txtIDLogin;
     private javax.swing.JTextField txtIDbienestar;
     private javax.swing.JTextField txtIDestudiante;
     private javax.swing.JTextField txtIDprofesor;
@@ -797,6 +799,36 @@ bienestar.setTipoUsuario("BIENESTAR");
 
 registro.registrarBienestar(bienestar);
 }
+ private void login() {
+        String email = txtGmailLogin.getText().trim();
+        String password = txtIDLogin.getText().trim();
+
+        if (email.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese email y contraseña", 
+                "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        LoginDAO loginDAO=new LoginDAO();
+        Usuario usuario = loginDAO.autenticarUsuario(email, password);
+        if (usuario != null) {
+            JOptionPane.showMessageDialog(this, 
+                "Bienvenido " + usuario.getNombre() + " " + usuario.getApellido() + 
+                "\nTipo de usuario: " + usuario.getTipoUsuario(), 
+                "Autenticación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            if (usuario.getTipoUsuario().equals("Estudiante") || usuario.getTipoUsuario().equals("Profesor")){
+             new Cancha().setVisible(true);
+             this.dispose();
+            }else if(usuario.getTipoUsuario().equals("Bienestar")){
+            new BienestarInterfaz().setVisible(true);
+                         this.dispose();
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, 
+                "Credenciales incorrectas o usuario no existe", 
+                "Error de autenticación", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }
 
 
