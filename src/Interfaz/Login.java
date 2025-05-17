@@ -816,7 +816,7 @@ registro.registrarBienestar(bienestar);
                 "\nTipo de usuario: " + usuario.getTipoUsuario(), 
                 "Autenticación exitosa", JOptionPane.INFORMATION_MESSAGE);
             if (usuario.getTipoUsuario().equals("Estudiante") || usuario.getTipoUsuario().equals("Profesor")){
-             new Cancha().setVisible(true);
+             new EstudianteProfesor().setVisible(true);
              this.dispose();
             }else if(usuario.getTipoUsuario().equals("Bienestar")){
             new BienestarInterfaz().setVisible(true);

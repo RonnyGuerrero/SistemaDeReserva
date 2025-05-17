@@ -4,7 +4,6 @@ import Model.*;
 import java.io.*;
 import java.text.*;
 import java.util.*;
-import java.util.stream.*;
 
 public class EventoDAO {
     private static final String DIRECTORIO = "C:/Users/Usuario/Desktop/proyectoDatos/Solicitudes/";
@@ -18,7 +17,6 @@ public class EventoDAO {
             pw.write("Nombre: " + evento.getNombreEvento());
             pw.write("Descripcion: " + evento.getDescripcion());
             pw.write("Fecha Inicio: " + DATE_FORMAT.format(evento.getFechaInicio()));
-            pw.write("Fecha Cierre: "+ DATE_FORMAT.format(evento.getFechaCierre()));
             pw.write("Participantes: " + evento.getParticipantes());
             pw.write("Organizador: " + evento.getOrganizador().getId());
             
@@ -51,7 +49,6 @@ public class EventoDAO {
             evento.setNombreEvento(datos.get("Nombre"));
             evento.setDescripcion(datos.get("Descripcion"));
             evento.setFechaInicio(DATE_FORMAT.parse(datos.get("Fecha Inicio")));
-            evento.setFechaInicio(DATE_FORMAT.parse(datos.get("Fecha Cierre")));
             evento.setParticipantes(datos.get("Participantes"));
 
             

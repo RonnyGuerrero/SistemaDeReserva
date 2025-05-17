@@ -7,7 +7,15 @@ public class Evento {
     private String idEvento;
     private String nombreEvento;
     private Date fechaInicio;
-    private Date fechaCierre;
+    private String FechaCreada;
+
+    public String getFechaCreada() {
+        return FechaCreada;
+    }
+
+    public void setFechaCreada(String FechaCreada) {
+        this.FechaCreada = FechaCreada;
+    }
     private String descripcion;
     private String participantes;
     private Usuario organizador;
@@ -29,8 +37,6 @@ public class Evento {
     public Date getFechaInicio() { return fechaInicio; }
     public void setFechaInicio(Date fecha) { this.fechaInicio = fecha; }
     
-    public Date getFechaCierre() { return fechaCierre; }
-    public void setFechaCierre(Date fecha) { this.fechaCierre = fecha; }
     
     public String getDescripcion() { return descripcion; }
     public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
