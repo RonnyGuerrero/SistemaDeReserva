@@ -1,0 +1,222 @@
+@startuml
+skinparam classFontSize 12
+skinparam classAttributeFontSize 11
+
+' Clases principales del sistema
+class Sistema {
+  +iniciar()
+  +cerrar()
+}
+
+class Registro {
+  +registrarEstudiante(Usuario) : Estudiante
+  +registrarProfesor(Usuario) : Profesor
+  +registrarBienestar(Usuario) : Bienestar
+  +validarDatos(Usuario) : boolean
+}
+
+class Login {
+  -String id
+  -String gmail
+  -String contrasena
+  +autenticar() : boolean
+  +recuperarContrasena() : boolean
+}
+
+class Usuario {
+  -String nombre
+  -String apellido
+  -String genero
+  -String gmail
+  -String numeroTelefonico
+  -String id
+  -String tipoUsuario
+  +validarEmail() : boolean
+  +actualizarPerfil() : boolean
+}
+
+class Estudiante {
+  -String programa
+  -String semestre
+  -String facultad
+  +solicitarReserva(Cancha, Fecha) : ReservarCancha
+  +consultarReservas() : List<ReservarCancha>
+  +cancelarReserva(ReservarCancha) : boolean
+}
+
+class Profesor {
+  -String profesion
+  -String programa
+  -String facultad
+  +solicitarReserva(Cancha, Fecha) : ReservarCancha
+  +consultarReservas() : List<ReservarCancha>
+  +cancelarReserva(ReservarCancha) : boolean
+}
+
+class Bienestar {
+  -String direccion
+  -String oficio
+  -String departamento
+  +crearEvento(Cancha, Fecha) : Evento
+  +gestionarEvento(Evento) : boolean
+  +asignarRecursos(Evento) : boolean
+}
+
+class Cancha {
+  -String idCancha
+  -String nombre
+  -String tipoCancha
+  -int capacidad
+  -boolean disponibilidad
+  +verDisponibilidad(Fecha) : boolean
+  +reservarCancha(Fecha, Usuario) : boolean
+  +liberarCancha(ReservarCancha) : boolean
+  +obtenerHorariosDisponibles(Fecha) : List<Horario>
+}
+
+class ReservarCancha {
+  -String idReserva
+  -String dia
+  -String hora
+  -Date fecha
+  -String motivo
+  -EstadoReserva estado
+  +confirmarReserva() : boolean
+  +cancelarReserva() : boolean
+  +modificarReserva(Fecha) : boolean
+}
+
+class Evento {
+  -String idEvento
+  -String nombreEvento
+  -Date fecha
+  -String descripcion
+  -int participantesEstimados
+  +crearEvento() : boolean
+  +modificarEvento() : boolean
+  +cancelarEvento() : boolean
+  +invitarParticipantes(List<Usuario>) : boolean
+}
+
+class Deporte {
+  -String idDeporte
+  -String nombreDeporte
+  -String reglas
+  -int jugadoresRequeridos
+  +asociarCancha(String idCancha) : boolean
+  +getReglamento() : String
+}
+
+class Administrador {
+  -String idAdmin
+  -String contrasena
+  -NivelAcceso nivel
+  +verReservas() : List<ReservarCancha>
+  +modificarReservas(ReservarCancha) : boolean
+  +aprobarSolicitud(ReservarCancha) : boolean
+  +generarReporte() : Reporte
+  +gestionarUsuarios() : boolean
+}
+
+class Historial {
+  -String idHistorial
+  -String idUsuario
+  -List<ReservarCancha> reservas
+  +consultarHistorial() : List<ReservarCancha>
+  +generarReporte() : Reporte
+}
+
+class Fecha {
+  -Date fecha
+  -Time horaInicio
+  -Time horaFin
+  +estaDisponible(Cancha) : boolean
+  +crearRango(Date, Time, Time) : Fecha
+}
+
+class Horario {
+  -Map<DiaSemana, List<Fecha>> horariosSemana
+  +agregarHorario(DiaSemana, Fecha) : boolean
+  +removerHorario(DiaSemana, Fecha) : boolean
+  +consultarDisponibilidad(DiaSemana, Fecha) : boolean
+}
+
+class Reporte {
+  -String idReporte
+  -Date fechaGeneracion
+  -TipoReporte tipo
+  +generarPDF() : File
+  +enviarPorCorreo(String destinatario) : boolean
+}
+
+enum EstadoReserva {
+  PENDIENTE
+  APROBADA
+  RECHAZADA
+  CANCELADA
+  FINALIZADA
+}
+
+enum DiaSemana {
+  LUNES
+  MARTES
+  MIERCOLES
+  JUEVES
+  VIERNES
+  SABADO
+  DOMINGO
+}
+
+enum TipoReporte {
+  OCUPACION
+  USUARIO
+  ESTADISTICO
+  MANTENIMIENTO
+}
+
+enum NivelAcceso {
+  BASICO
+  INTERMEDIO
+  COMPLETO
+}
+
+' Relaciones entre clases
+Sistema --> "*" Usuario : gestiona >
+Sistema --> "1" Administrador : tiene >
+Sistema --> "1" Registro : incluye >
+Sistema --> "1" Login : usa >
+
+Usuario <|-- Estudiante : es un
+Usuario <|-- Profesor : es un
+Usuario <|-- Bienestar : es un
+Usuario <|-- Administrador : es un
+
+Registro --> Usuario : crea >
+Login --> Usuario : autentica >
+
+Estudiante --> "*" ReservarCancha : solicita >
+Profesor --> "*" ReservarCancha : solicita >
+Bienestar --> "*" Evento : organiza >
+
+ReservarCancha --> "1" Cancha : usa >
+ReservarCancha --> "1" Fecha : en >
+ReservarCancha --> "1" EstadoReserva : tiene >
+ReservarCancha --> "1" Usuario : realizada por >
+
+Evento --> "1" Cancha : ocurre en >
+Evento --> "1" Fecha : programado para >
+Evento --> "*" Usuario : participan >
+
+Deporte --> "*" Cancha : se practica en >
+Cancha --> "1" Horario : tiene >
+
+Historial --> "1" Usuario : pertenece a >
+Historial --> "*" ReservarCancha : contiene >
+
+Administrador --> "*" ReservarCancha : gestiona >
+Administrador --> "*" Cancha : administra >
+Administrador --> "*" Reporte : genera >
+
+Cancha --> "*" Fecha : disponible en >
+
+@enduml
