@@ -24,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
 public class EstudianteProfesor extends javax.swing.JFrame {
     
         private static final String DIRECTORIO_EVENTOS = "C:/Users/elise/OneDrive/Desktop/reservas/";
-
+         
 
     /**
      * Creates new form EstudianteProfesor
@@ -62,6 +62,7 @@ public class EstudianteProfesor extends javax.swing.JFrame {
               String fechaInicio = "";
               String descripcion = "";
               String fechaCreada = "";
+              String estado = "Pendiente";
               
               while ((line = leer.readLine()) != null) {
                 if (line.startsWith("NOMBRE_EVENTO: ")) {
@@ -75,6 +76,8 @@ public class EstudianteProfesor extends javax.swing.JFrame {
                     
                 } else if (line.startsWith("FECHA_CREADA: ")){
                      fechaCreada = line.substring("FECHA_CREADA".length());
+                } else if (line.startsWith("ESTADO: ")) {
+                    estado = line.substring("ESTADO: ".length());
                 }
             }
               if(!nombreEvento.isEmpty()){
@@ -82,7 +85,7 @@ public class EstudianteProfesor extends javax.swing.JFrame {
                       fechaInicio,
                       nombreEvento,
                       descripcion,
-                      "Pendiente",
+                      estado,
                       //evento pendiente
                       
                       fechaCreada
@@ -116,6 +119,7 @@ public class EstudianteProfesor extends javax.swing.JFrame {
         btnRegresar = new javax.swing.JButton();
         dateINICIO = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         btnAgregar = new javax.swing.JButton();
@@ -157,22 +161,32 @@ public class EstudianteProfesor extends javax.swing.JFrame {
 
         jLabel1.setText("FECHA INICIO");
 
+        txtNombre.setBorder(javax.swing.BorderFactory.createTitledBorder("NOMBRE"));
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEvento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(btnAgregarEvento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRegresar))
-                    .addComponent(dateINICIO, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDescripcion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(dateINICIO, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNombre))
+                    .addComponent(txtDescripcion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
+                    .addComponent(txtEvento, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -181,7 +195,9 @@ public class EstudianteProfesor extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dateINICIO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(dateINICIO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
@@ -335,7 +351,7 @@ public class EstudianteProfesor extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEventoActionPerformed
 
     private void btnAgregarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEventoActionPerformed
-       
+         
         agregarATabla(); 
         agregarAArchivo();
         limpiarCampos();
@@ -351,6 +367,7 @@ public class EstudianteProfesor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+      
       Agregar.setVisible(true);
       Agregar.setSize(400,430);
       Agregar.setLocationRelativeTo(null);
@@ -387,7 +404,7 @@ public class EstudianteProfesor extends javax.swing.JFrame {
               if (archivoOriginal.exists()){
                   archivoOriginal.delete();
               }
-        
+            
             actualizarFila(selectedRow);
             agregarAArchivo();
             limpiarCampos();
@@ -424,6 +441,10 @@ public class EstudianteProfesor extends javax.swing.JFrame {
                                         
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -477,6 +498,7 @@ public class EstudianteProfesor extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtEvento;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 
 private void actualizarFila(int row) {
@@ -500,6 +522,7 @@ public void agregarATabla() {
     evento.setFechaInicio(dateINICIO.getDate());
     evento.setNombreEvento(txtEvento.getText());
     
+    
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     String fechaInicioStr = sdf.format(evento.getFechaInicio());
     String timestamp = sdf.format(new Date());
@@ -509,7 +532,8 @@ public void agregarATabla() {
         fechaInicioStr, 
         evento.getNombreEvento(), 
         evento.getDescripcion(), 
-        "Pendiente",
+        evento.getEstado(),
+        
         timestamp
             
     });
@@ -518,6 +542,7 @@ private void limpiarCampos() {
     txtEvento.setText("");
     txtDescripcion.setText("");
     dateINICIO.setDate(null);
+    txtNombre.setText("");
 }
 private void limpiarTabla() {
     DefaultTableModel model = (DefaultTableModel) ModelSolicitudes.getModel();
@@ -528,6 +553,7 @@ private void limpiarTabla() {
     String nombreEvento = txtEvento.getText();
     Date fechaInicio = dateINICIO.getDate();
     String descripcion = txtDescripcion.getText();
+    String nombreUsuario = txtNombre.getText();
     
     if(nombreEvento.isEmpty() || fechaInicio == null || descripcion.isEmpty()) {
         JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
@@ -538,6 +564,7 @@ private void limpiarTabla() {
     evento.setNombreEvento(nombreEvento);
     evento.setFechaInicio(fechaInicio);
     evento.setDescripcion(descripcion);
+    evento.setNombreuUsuario(nombreUsuario);
     
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     evento.setFechaCreada(sdf.format(new Date()));
@@ -547,11 +574,13 @@ private void limpiarTabla() {
                          ".txt";
     
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo))) {
-        writer.write("==========DATOS DEL EVENTO==========\n");    
+        writer.write("==========DATOS DEL EVENTO==========\n"); 
         writer.write("NOMBRE_EVENTO: " + evento.getNombreEvento() + "\n");
         writer.write("FECHA_INICIO: " + sdf.format(evento.getFechaInicio()) + "\n");
         writer.write("FECHA_CREADA: " + evento.getFechaCreada() + "\n");
         writer.write("DESCRIPCION: " + evento.getDescripcion() + "\n");
+        writer.write("ESTADO: " + evento.getEstado()+"\n");
+        writer.write("NOMBRE_USUARIO: " + evento.getNombreuUsuario());
         
         
     } catch (IOException e) {

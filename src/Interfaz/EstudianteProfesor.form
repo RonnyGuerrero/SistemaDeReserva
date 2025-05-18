@@ -31,17 +31,21 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtEvento" alignment="0" min="-2" pref="284" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                               <Component id="btnAgregarEvento" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnRegresar" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="dateINICIO" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
-                          <Component id="txtDescripcion" alignment="0" min="-2" pref="312" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="dateINICIO" min="-2" pref="141" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="txtNombre" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="txtDescripcion" alignment="0" pref="312" max="32767" attributes="0"/>
+                          <Component id="txtEvento" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="23" max="32767" attributes="0"/>
                   </Group>
@@ -52,8 +56,11 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="dateINICIO" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="dateINICIO" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNombre" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="txtEvento" min="-2" pref="64" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
@@ -115,6 +122,18 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="FECHA INICIO"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtNombre">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="NOMBRE"/>
+                  </Border>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

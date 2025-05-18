@@ -1,14 +1,25 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Evento {
+public class Evento implements Serializable {
     private String idEvento;
     private String nombreEvento;
     private Date fechaInicio;
     private String FechaCreada;
 
+    public String getNombreuUsuario() {
+        return nombreuUsuario;
+    }
+
+    public void setNombreuUsuario(String nombreuUsuario) {
+        this.nombreuUsuario = nombreuUsuario;
+    }
+    private String nombreuUsuario;
+   
+    
     public String getFechaCreada() {
         return FechaCreada;
     }
@@ -19,6 +30,15 @@ public class Evento {
     private String descripcion;
     private String participantes;
     private Usuario organizador;
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    private String estado;
     
     public String getParticipantes() {
         return participantes;}
