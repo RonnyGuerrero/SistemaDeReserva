@@ -113,13 +113,14 @@ public class EstudianteProfesor extends javax.swing.JFrame {
 
         Agregar = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
-        txtDescripcion = new javax.swing.JTextField();
         txtEvento = new javax.swing.JTextField();
         btnAgregarEvento = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         dateINICIO = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtDescripcion = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         btnAgregar = new javax.swing.JButton();
@@ -130,13 +131,6 @@ public class EstudianteProfesor extends javax.swing.JFrame {
         ModelSolicitudes = new javax.swing.JTable();
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("AGREGAR"));
-
-        txtDescripcion.setBorder(javax.swing.BorderFactory.createTitledBorder("DESCRIPCION"));
-        txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDescripcionActionPerformed(evt);
-            }
-        });
 
         txtEvento.setBorder(javax.swing.BorderFactory.createTitledBorder("EVENTO"));
         txtEvento.addActionListener(new java.awt.event.ActionListener() {
@@ -168,6 +162,11 @@ public class EstudianteProfesor extends javax.swing.JFrame {
             }
         });
 
+        txtDescripcion.setColumns(20);
+        txtDescripcion.setRows(5);
+        txtDescripcion.setBorder(javax.swing.BorderFactory.createTitledBorder("DESCRIPCION"));
+        jScrollPane1.setViewportView(txtDescripcion);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -184,9 +183,9 @@ public class EstudianteProfesor extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                         .addComponent(dateINICIO, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtNombre))
-                    .addComponent(txtDescripcion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
-                    .addComponent(txtEvento, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE))
+                    .addComponent(txtEvento, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -200,9 +199,9 @@ public class EstudianteProfesor extends javax.swing.JFrame {
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregarEvento)
                     .addComponent(btnRegresar))
@@ -369,7 +368,7 @@ public class EstudianteProfesor extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
       
       Agregar.setVisible(true);
-      Agregar.setSize(400,430);
+      Agregar.setSize(400,440);
       Agregar.setLocationRelativeTo(null);
 
     }//GEN-LAST:event_btnAgregarActionPerformed
@@ -412,10 +411,6 @@ public class EstudianteProfesor extends javax.swing.JFrame {
         
     });
     }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDescripcionActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
           
@@ -495,8 +490,9 @@ public class EstudianteProfesor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextArea txtDescripcion;
     private javax.swing.JTextField txtEvento;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables

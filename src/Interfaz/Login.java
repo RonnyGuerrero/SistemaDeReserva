@@ -45,11 +45,11 @@ RegistroDAO registro= new RegistroDAO();
         txtProgramaestudiante = new javax.swing.JTextField();
         txtCelularestudiante = new javax.swing.JTextField();
         txtNombreestudiante = new javax.swing.JTextField();
-        txtGeneroestudiante = new javax.swing.JTextField();
         txtIDestudiante = new javax.swing.JTextField();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         txtSemestreestudiante = new javax.swing.JTextField();
+        comboboxGeneroEstudiantee = new javax.swing.JComboBox<>();
         Profesor = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         txtApellidoprofesor = new javax.swing.JTextField();
@@ -61,12 +61,11 @@ RegistroDAO registro= new RegistroDAO();
         jButton8 = new javax.swing.JButton();
         txtGmailprofesor = new javax.swing.JTextField();
         txtCelularprofesor = new javax.swing.JTextField();
-        txtGeneroprofesor = new javax.swing.JTextField();
         txtIDprofesor = new javax.swing.JTextField();
+        comboBoxGeneroProfesor = new javax.swing.JComboBox<>();
         BienestarDialogo = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
         txtNombrebienestar = new javax.swing.JTextField();
-        txtGenerobienestar = new javax.swing.JTextField();
         txtIDbienestar = new javax.swing.JTextField();
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
@@ -76,6 +75,7 @@ RegistroDAO registro= new RegistroDAO();
         txtGmailbienestar = new javax.swing.JTextField();
         txtDireccionbienestar = new javax.swing.JTextField();
         txtCelularbienestar = new javax.swing.JTextField();
+        comoboBoxGeneroBienestar = new javax.swing.JComboBox<>();
         login = new javax.swing.JPanel();
         txtIDLogin = new javax.swing.JTextField();
         txtGmailLogin = new javax.swing.JTextField();
@@ -158,8 +158,6 @@ RegistroDAO registro= new RegistroDAO();
 
         txtNombreestudiante.setBorder(javax.swing.BorderFactory.createTitledBorder("NOMBRE"));
 
-        txtGeneroestudiante.setBorder(javax.swing.BorderFactory.createTitledBorder("GENERO"));
-
         txtIDestudiante.setBorder(javax.swing.BorderFactory.createTitledBorder("ID"));
 
         jButton11.setText("REGISTRAR");
@@ -183,6 +181,9 @@ RegistroDAO registro= new RegistroDAO();
             }
         });
 
+        comboboxGeneroEstudiantee.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "hombre", "mujer", "otro" }));
+        comboboxGeneroEstudiantee.setBorder(javax.swing.BorderFactory.createTitledBorder("GENERO"));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -201,7 +202,7 @@ RegistroDAO registro= new RegistroDAO();
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtGmailestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtGeneroestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(comboboxGeneroEstudiantee, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(txtProgramaestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -219,11 +220,12 @@ RegistroDAO registro= new RegistroDAO();
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtGmailestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtGeneroestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIDestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtGmailestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtIDestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboboxGeneroEstudiantee, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombreestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -238,7 +240,7 @@ RegistroDAO registro= new RegistroDAO();
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton11)
                     .addComponent(jButton12))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout EstudianteLayout = new javax.swing.GroupLayout(Estudiante.getContentPane());
@@ -287,9 +289,15 @@ RegistroDAO registro= new RegistroDAO();
             }
         });
 
-        txtGeneroprofesor.setBorder(javax.swing.BorderFactory.createTitledBorder("GENERO"));
-
         txtIDprofesor.setBorder(javax.swing.BorderFactory.createTitledBorder("ID"));
+
+        comboBoxGeneroProfesor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "hombre", "mujer", "otro" }));
+        comboBoxGeneroProfesor.setBorder(javax.swing.BorderFactory.createTitledBorder("GENERO"));
+        comboBoxGeneroProfesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxGeneroProfesorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -309,7 +317,7 @@ RegistroDAO registro= new RegistroDAO();
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtGmailprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtGeneroprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(comboBoxGeneroProfesor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(txtProgramaprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -327,11 +335,12 @@ RegistroDAO registro= new RegistroDAO();
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtGmailprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtGeneroprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIDprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtGmailprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtIDprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboBoxGeneroProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombreprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -363,8 +372,6 @@ RegistroDAO registro= new RegistroDAO();
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("BIENESTAR"));
 
         txtNombrebienestar.setBorder(javax.swing.BorderFactory.createTitledBorder("NOMBRE"));
-
-        txtGenerobienestar.setBorder(javax.swing.BorderFactory.createTitledBorder("GENERO"));
 
         txtIDbienestar.setBorder(javax.swing.BorderFactory.createTitledBorder("ID"));
 
@@ -409,6 +416,14 @@ RegistroDAO registro= new RegistroDAO();
             }
         });
 
+        comoboBoxGeneroBienestar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "hombre", "mujer", "otro" }));
+        comoboBoxGeneroBienestar.setBorder(javax.swing.BorderFactory.createTitledBorder("GENERO"));
+        comoboBoxGeneroBienestar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comoboBoxGeneroBienestarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -417,17 +432,17 @@ RegistroDAO registro= new RegistroDAO();
                 .addGap(24, 24, 24)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(txtIDbienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtGmailbienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comoboBoxGeneroBienestar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(txtNombrebienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtApellidobienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCelularbienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(txtIDbienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtGmailbienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtGenerobienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(txtDireccionbienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -436,20 +451,20 @@ RegistroDAO registro= new RegistroDAO();
                                 .addComponent(jButton13)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton14))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                            .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(txtOficionbienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtDepartamentobienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtGmailbienestar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtGenerobienestar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIDbienestar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtGmailbienestar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtIDbienestar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comoboBoxGeneroBienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombrebienestar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -572,10 +587,6 @@ RegistroDAO registro= new RegistroDAO();
         Registro.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void txtCelularprofesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCelularprofesorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCelularprofesorActionPerformed
-
     private void txtCelularestudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCelularestudianteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCelularestudianteActionPerformed
@@ -606,12 +617,6 @@ RegistroDAO registro= new RegistroDAO();
         
     }//GEN-LAST:event_jButton12ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-        
-        Profesor.dispose();
-    }//GEN-LAST:event_jButton8ActionPerformed
-
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
         BienestarDialogo.dispose();
@@ -623,13 +628,6 @@ RegistroDAO registro= new RegistroDAO();
       Registro.dispose();
     }//GEN-LAST:event_jButton11ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-registrarProfesor();
-
-Profesor.dispose();
-Registro.dispose();
-    }//GEN-LAST:event_jButton7ActionPerformed
-
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
 registrarBienestar();
 
@@ -640,6 +638,31 @@ Registro.dispose();
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         login();
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txtCelularprofesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCelularprofesorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCelularprofesorActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+
+        Profesor.dispose();
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        registrarProfesor();
+
+        Profesor.dispose();
+        Registro.dispose();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void comboBoxGeneroProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxGeneroProfesorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxGeneroProfesorActionPerformed
+
+    private void comoboBoxGeneroBienestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comoboBoxGeneroBienestarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comoboBoxGeneroBienestarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -683,7 +706,10 @@ Registro.dispose();
     private javax.swing.JDialog Registro;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnRegistrarUsuario;
+    private javax.swing.JComboBox<String> comboBoxGeneroProfesor;
     private javax.swing.JComboBox<String> comboTipoUsuario;
+    private javax.swing.JComboBox<String> comboboxGeneroEstudiantee;
+    private javax.swing.JComboBox<String> comoboBoxGeneroBienestar;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
@@ -706,9 +732,6 @@ Registro.dispose();
     private javax.swing.JTextField txtDireccionbienestar;
     private javax.swing.JTextField txtFacultadestudiante;
     private javax.swing.JTextField txtFacultadprofesor;
-    private javax.swing.JTextField txtGenerobienestar;
-    private javax.swing.JTextField txtGeneroestudiante;
-    private javax.swing.JTextField txtGeneroprofesor;
     private javax.swing.JTextField txtGmailLogin;
     private javax.swing.JTextField txtGmailbienestar;
     private javax.swing.JTextField txtGmailestudiante;
@@ -758,7 +781,7 @@ public void registrarEstudiante(){
    estudiante.setGmail(txtGmailestudiante.getText());
    estudiante.setApellido(txtApellidoestudiante.getText());
    estudiante.setNumeroTelefonico(txtCelularestudiante.getText());
-   estudiante.setGenero(txtGeneroestudiante.getText());
+   estudiante.setGenero(comboboxGeneroEstudiantee.getSelectedItem().toString());
    estudiante.setFacultad(txtFacultadestudiante.getText());
    estudiante.setSemestre(txtSemestreestudiante.getText());
    estudiante.setPrograma(txtProgramaestudiante.getText());
@@ -774,7 +797,7 @@ public void registrarProfesor(){
     profesor.setId(txtIDprofesor.getText());
     profesor.setGmail(txtGmailprofesor.getText());
     profesor.setNumeroTelefonico(txtCelularprofesor.getText());
-    profesor.setGenero(txtGeneroprofesor.getText());
+    profesor.setGenero(comboBoxGeneroProfesor.getSelectedItem().toString()); // nuevo
     profesor.setTipoUsuario("PROFESOR");
     profesor.setFacultad(txtFacultadprofesor.getText());
     profesor.setProfesion(txtProfesionprofesor.getText());
@@ -791,7 +814,7 @@ bienestar.setApellido(txtApellidobienestar.getText());
 bienestar.setNombre(txtNombrebienestar.getText());
 bienestar.setDepartamento(txtDepartamentobienestar.getText());
 bienestar.setDireccion(txtDireccionbienestar.getText());
-bienestar.setGenero(txtGenerobienestar.getText());
+bienestar.setGenero(comoboBoxGeneroBienestar.getSelectedItem().toString()); //nuevo
 bienestar.setGmail(txtGmailbienestar.getText());
 bienestar.setNumeroTelefonico(txtCelularbienestar.getText());
 bienestar.setOficio(txtOficionbienestar.getText());
@@ -819,7 +842,7 @@ registro.registrarBienestar(bienestar);
              new EstudianteProfesor().setVisible(true);
              this.dispose();
             }else if(usuario.getTipoUsuario().equals("Bienestar")){
-            new BienestarInterfaz().setVisible(true);
+            new BienvenidoBienestar().setVisible(true);
                          this.dispose();
 
             

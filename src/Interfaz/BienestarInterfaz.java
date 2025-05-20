@@ -14,7 +14,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -186,33 +188,39 @@ public class BienestarInterfaz extends javax.swing.JFrame {
         fechaCierreEstdo = new javax.swing.JTextField();
         txtfehcInicioEstado = new javax.swing.JTextField();
         txtEventoEstado = new javax.swing.JTextField();
-        txtDescripcionEstado = new javax.swing.JTextField();
         txtFechaSolicitudEstado = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         comboEstado = new javax.swing.JComboBox<>();
-        EstadoEvento = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtDescripcionEstado = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaBienestar = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        panelBoton = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        panelBoton2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("DETALLES"));
 
+        txtIdEstado.setEditable(false);
         txtIdEstado.setBorder(javax.swing.BorderFactory.createTitledBorder("ID"));
 
+        txtNOmbreEstado.setEditable(false);
         txtNOmbreEstado.setBorder(javax.swing.BorderFactory.createTitledBorder("NOMBRE"));
 
+        fechaCierreEstdo.setEditable(false);
         fechaCierreEstdo.setBorder(javax.swing.BorderFactory.createTitledBorder("FECHA DE CIERRE"));
 
+        txtfehcInicioEstado.setEditable(false);
         txtfehcInicioEstado.setBorder(javax.swing.BorderFactory.createTitledBorder("FECHA DE INICIO"));
 
+        txtEventoEstado.setEditable(false);
         txtEventoEstado.setBorder(javax.swing.BorderFactory.createTitledBorder("EVENTO"));
 
-        txtDescripcionEstado.setBorder(javax.swing.BorderFactory.createTitledBorder("DESCRIPCION"));
-
+        txtFechaSolicitudEstado.setEditable(false);
         txtFechaSolicitudEstado.setBorder(javax.swing.BorderFactory.createTitledBorder("FECHA DE SOLICITUD"));
 
         jButton3.setText("ACEPTAR");
@@ -236,16 +244,28 @@ public class BienestarInterfaz extends javax.swing.JFrame {
             }
         });
 
-        EstadoEvento.setBorder(javax.swing.BorderFactory.createTitledBorder("ESTADO"));
+        txtDescripcionEstado.setEditable(false);
+        txtDescripcionEstado.setColumns(20);
+        txtDescripcionEstado.setRows(5);
+        txtDescripcionEstado.setBorder(javax.swing.BorderFactory.createTitledBorder("DESCRIPCION"));
+        jScrollPane2.setViewportView(txtDescripcionEstado);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addContainerGap(177, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtDescripcionEstado)
+                    .addComponent(jScrollPane2)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtFechaSolicitudEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
@@ -258,16 +278,6 @@ public class BienestarInterfaz extends javax.swing.JFrame {
                                 .addComponent(txtfehcInicioEstado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtEventoEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(67, 67, 67))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(EstadoEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addContainerGap(177, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,20 +294,14 @@ public class BienestarInterfaz extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fechaCierreEstdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEventoEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addComponent(txtDescripcionEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(jButton4)
-                            .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(48, 48, 48))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(EstadoEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4)
+                    .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48))
         );
 
         javax.swing.GroupLayout DetallesLayout = new javax.swing.GroupLayout(Detalles.getContentPane());
@@ -354,44 +358,95 @@ public class BienestarInterfaz extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jButton1.setText("ELIMINAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        panelBoton.setBackground(new java.awt.Color(0, 0, 204));
+        panelBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelBoton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelBotonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelBotonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelBotonMouseExited(evt);
             }
         });
 
-        jButton2.setText("DETALLE");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("DETALLES");
+
+        javax.swing.GroupLayout panelBotonLayout = new javax.swing.GroupLayout(panelBoton);
+        panelBoton.setLayout(panelBotonLayout);
+        panelBotonLayout.setHorizontalGroup(
+            panelBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotonLayout.createSequentialGroup()
+                .addContainerGap(214, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(233, 233, 233))
+        );
+        panelBotonLayout.setVerticalGroup(
+            panelBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotonLayout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(29, 29, 29))
+        );
+
+        panelBoton2.setBackground(new java.awt.Color(0, 0, 204));
+        panelBoton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelBoton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelBoton2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelBoton2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelBoton2MouseExited(evt);
             }
         });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("ELIMINAR");
+
+        javax.swing.GroupLayout panelBoton2Layout = new javax.swing.GroupLayout(panelBoton2);
+        panelBoton2.setLayout(panelBoton2Layout);
+        panelBoton2Layout.setHorizontalGroup(
+            panelBoton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBoton2Layout.createSequentialGroup()
+                .addGap(211, 211, 211)
+                .addComponent(jLabel2)
+                .addContainerGap(234, Short.MAX_VALUE))
+        );
+        panelBoton2Layout.setVerticalGroup(
+            panelBoton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBoton2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(26, 26, 26))
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 539, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(526, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(panelBoton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelBoton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                .addGap(0, 16, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelBoton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelBoton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                    .addContainerGap()))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -412,65 +467,6 @@ public class BienestarInterfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tablaBienestar.getSelectedRow();
-        if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(null, "Selecciones un evento "
-                    + "primero", "Advertencia", JOptionPane.WARNING_MESSAGE);
-           return;
-        }
-        Evento evento = listaEventos.get(selectedRow);
-        String nombreArchivo = DIRECTORIO_EVENTOS + evento.getNombreEvento().replaceAll("[^a-zA-Z0-9]", 
-                "_") + ".txt";
-        File archivo = new File(nombreArchivo);
-        
-        if (archivo.exists()){ 
-           if (archivo.delete()){
-               DefaultTableModel model = (DefaultTableModel) tablaBienestar.getModel();
-               
-               model.removeRow(selectedRow);
-               listaEventos.remove(selectedRow);
-               JOptionPane.showMessageDialog(null, "Evento eliminado correctamente",
-                       "Evento", JOptionPane.INFORMATION_MESSAGE);
-               
-           }else {
-               JOptionPane.showMessageDialog(null, "No se pudo eliminar "
-                       + "el archivo del evento", "Error",JOptionPane.ERROR_MESSAGE);
-                       
-           }
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tablaBienestar.getSelectedRow();
-        if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(null, "Selecciones un evento primero", "Advertencia",
-                    JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
-        eventoSeleccionado = listaEventos.get(selectedRow);
-        
-        txtIdEstado.setText(String.valueOf(selectedRow + 1));
-        txtNOmbreEstado.setText(eventoSeleccionado.getNombreEvento());
-        txtfehcInicioEstado.setText(eventoSeleccionado.getFechaInicio() != null ? 
-                new SimpleDateFormat("yyyy-MM-dd").format(eventoSeleccionado.getFechaInicio()) : "");
-        txtFechaSolicitudEstado.setText(eventoSeleccionado.getFechaCreada());
-        txtEventoEstado.setText("Evento");
-        txtDescripcionEstado.setText(eventoSeleccionado.getDescripcion());
-        
-        comboEstado.setSelectedItem(eventoSeleccionado.getEstado());
-        
-                
-        
-        Detalles.setVisible(true);
-        Detalles.setSize(590, 600);
-        Detalles.setLocationRelativeTo(null);
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         Detalles.dispose();
@@ -484,6 +480,80 @@ public class BienestarInterfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
         actualizarEstadoEvento();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void panelBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBotonMouseClicked
+        // TODO add your handling code here:
+        int selectedRow = tablaBienestar.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(null, "Selecciones un evento primero", "Advertencia",
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        eventoSeleccionado = listaEventos.get(selectedRow);
+
+        txtIdEstado.setText(String.valueOf(selectedRow + 1));
+        txtNOmbreEstado.setText(eventoSeleccionado.getNombreEvento());
+        txtfehcInicioEstado.setText(eventoSeleccionado.getFechaInicio() != null ?
+            new SimpleDateFormat("yyyy-MM-dd").format(eventoSeleccionado.getFechaInicio()) : "");
+        txtFechaSolicitudEstado.setText(eventoSeleccionado.getFechaCreada());
+        txtEventoEstado.setText("Evento");
+        txtDescripcionEstado.setText(eventoSeleccionado.getDescripcion());
+
+        comboEstado.setSelectedItem(eventoSeleccionado.getEstado());
+
+        Detalles.setVisible(true);
+        Detalles.setSize(590, 600);
+        Detalles.setLocationRelativeTo(null);
+    }//GEN-LAST:event_panelBotonMouseClicked
+
+    private void panelBotonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBotonMouseEntered
+        // TODO add your handling code here:normal=[0,0,51] [0,0,204][0,51,204] al pasar mause=0,51,209
+        Border bordeNormal =  BorderFactory.createLineBorder(new java.awt.Color(0,0,51), 5);
+        panelBoton.setBackground(new java.awt.Color(0,51,209));
+        panelBoton.setBorder(bordeNormal);
+
+    }//GEN-LAST:event_panelBotonMouseEntered
+
+    private void panelBotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBotonMouseExited
+        // TODO add your handling code here:
+        Border borde = BorderFactory.createLineBorder(new java.awt.Color(0,0,204),1);
+        panelBoton.setBorder(borde);
+        panelBoton.setBackground(new java.awt.Color(0,0,204));
+    }//GEN-LAST:event_panelBotonMouseExited
+
+    private void panelBoton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBoton2MouseClicked
+        // TODO add your handling code here:
+        int selectedRow = tablaBienestar.getSelectedRow();
+        if (selectedRow == -1){
+            JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar",  "Advertencia",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        String nombreEvento = tablaBienestar.getValueAt(selectedRow, 1).toString();
+        String nombreArchivo = DIRECTORIO_EVENTOS + nombreEvento.replaceAll("[^a-zA-Z0-9]", "-") + ".txt";
+
+        File archivo = new File(nombreArchivo);
+        if (archivo.exists()){
+            archivo.delete();
+        }
+        DefaultTableModel model = (DefaultTableModel) tablaBienestar.getModel();
+        model.removeRow(selectedRow);
+
+    }//GEN-LAST:event_panelBoton2MouseClicked
+
+    private void panelBoton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBoton2MouseEntered
+        // TODO add your handling code here:normal=[0,0,51] [0,0,204][0,51,204] al pasar mause=0,51,209
+        Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        panelBoton2.setBackground(new java.awt.Color(0,51,209));
+        panelBoton2.setBorder(nuevoBorte);
+    }//GEN-LAST:event_panelBoton2MouseEntered
+
+    private void panelBoton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBoton2MouseExited
+        // TODO add your handling code here:
+        Border borde =BorderFactory.createLineBorder(new java.awt.Color(0,0,204),1);
+        panelBoton2.setBorder(borde);
+        panelBoton2.setBackground(new java.awt.Color(0,0,204));
+    }//GEN-LAST:event_panelBoton2MouseExited
 
     /**
      * @param args the command line arguments
@@ -523,19 +593,21 @@ public class BienestarInterfaz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog Detalles;
-    private javax.swing.JLabel EstadoEvento;
     private javax.swing.JComboBox<String> comboEstado;
     private javax.swing.JTextField fechaCierreEstdo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPanel panelBoton;
+    private javax.swing.JPanel panelBoton2;
     private javax.swing.JTable tablaBienestar;
-    private javax.swing.JTextField txtDescripcionEstado;
+    private javax.swing.JTextArea txtDescripcionEstado;
     private javax.swing.JTextField txtEventoEstado;
     private javax.swing.JTextField txtFechaSolicitudEstado;
     private javax.swing.JTextField txtIdEstado;
