@@ -753,7 +753,7 @@ public void registrarEstudiante(){
     Estudiante estudiante = new Estudiante();
     
    
-   estudiante.setId(txtIDestudiante.getText());
+   estudiante.setId(txtIDLogin.getText());
    estudiante.setNombre(txtNombreestudiante.getText());
    estudiante.setGmail(txtGmailestudiante.getText());
    estudiante.setApellido(txtApellidoestudiante.getText());
