@@ -34,6 +34,7 @@ public class BienestarInterfaz extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         listaEventos = new ArrayList<>();
+          setResizable(false);
         cargarEventosDesdeArchivo();
     }
     public void cargarEventosDesdeArchivo(){
@@ -75,8 +76,9 @@ public class BienestarInterfaz extends javax.swing.JFrame {
                     }else if (linea.startsWith("FECHA_CREADA: ")) {
                         evento.setFechaCreada(linea.substring("FECHA_CREADA: ".length()));
                         
-                    }else if (linea.startsWith("ESTADO: ")) {
-                        evento.setEstado(linea.substring("ESTADO: ".length()));
+                     }else if (linea.startsWith("ESTADO: ")){
+                         evento.setEstado(linea.substring("ESTADO: ".length()));
+                          
                     } else if (linea.startsWith("NOMBRE_USUARIO: ")) {
                         evento.setNombreuUsuario(linea.substring("NOMBRE_USUARIO: ".length()));
                     }
@@ -92,6 +94,7 @@ public class BienestarInterfaz extends javax.swing.JFrame {
                         "",
                         evento.getNombreEvento(),
                         evento.getDescripcion(),
+                        evento.getEstado()
                         
                         
                     });
@@ -189,11 +192,14 @@ public class BienestarInterfaz extends javax.swing.JFrame {
         txtfehcInicioEstado = new javax.swing.JTextField();
         txtEventoEstado = new javax.swing.JTextField();
         txtFechaSolicitudEstado = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         comboEstado = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtDescripcionEstado = new javax.swing.JTextArea();
+        btnPanelAtras = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        btnPanelAceptar = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaBienestar = new javax.swing.JTable();
@@ -203,7 +209,8 @@ public class BienestarInterfaz extends javax.swing.JFrame {
         panelBoton2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("DETALLES"));
+        jPanel3.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DETALLES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
         txtIdEstado.setEditable(false);
         txtIdEstado.setBorder(javax.swing.BorderFactory.createTitledBorder("ID"));
@@ -223,21 +230,15 @@ public class BienestarInterfaz extends javax.swing.JFrame {
         txtFechaSolicitudEstado.setEditable(false);
         txtFechaSolicitudEstado.setBorder(javax.swing.BorderFactory.createTitledBorder("FECHA DE SOLICITUD"));
 
-        jButton3.setText("ACEPTAR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("ATRAS");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
+        comboEstado.setBackground(new java.awt.Color(51, 51, 255));
+        comboEstado.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        comboEstado.setForeground(new java.awt.Color(0, 0, 0));
         comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "selecciona", "pendiente", "aprobada", "rechazada", "cancelada", "finalizada" }));
+        comboEstado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                comboEstadoMouseEntered(evt);
+            }
+        });
         comboEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboEstadoActionPerformed(evt);
@@ -250,22 +251,96 @@ public class BienestarInterfaz extends javax.swing.JFrame {
         txtDescripcionEstado.setBorder(javax.swing.BorderFactory.createTitledBorder("DESCRIPCION"));
         jScrollPane2.setViewportView(txtDescripcionEstado);
 
+        btnPanelAtras.setBackground(new java.awt.Color(51, 51, 255));
+        btnPanelAtras.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPanelAtrasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPanelAtrasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPanelAtrasMouseExited(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("ATRAS");
+
+        javax.swing.GroupLayout btnPanelAtrasLayout = new javax.swing.GroupLayout(btnPanelAtras);
+        btnPanelAtras.setLayout(btnPanelAtrasLayout);
+        btnPanelAtrasLayout.setHorizontalGroup(
+            btnPanelAtrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnPanelAtrasLayout.createSequentialGroup()
+                .addContainerGap(33, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(30, 30, 30))
+        );
+        btnPanelAtrasLayout.setVerticalGroup(
+            btnPanelAtrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnPanelAtrasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        btnPanelAceptar.setBackground(new java.awt.Color(51, 51, 255));
+        btnPanelAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPanelAceptarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPanelAceptarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPanelAceptarMouseExited(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("ACEPTAR");
+
+        javax.swing.GroupLayout btnPanelAceptarLayout = new javax.swing.GroupLayout(btnPanelAceptar);
+        btnPanelAceptar.setLayout(btnPanelAceptarLayout);
+        btnPanelAceptarLayout.setHorizontalGroup(
+            btnPanelAceptarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnPanelAceptarLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel4)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        btnPanelAceptarLayout.setVerticalGroup(
+            btnPanelAceptarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnPanelAceptarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addContainerGap(7, Short.MAX_VALUE))
+        );
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("ESTADO");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(120, 120, 120)
+                .addGap(65, 65, 65)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addComponent(btnPanelAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(btnPanelAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtFechaSolicitudEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
@@ -281,7 +356,7 @@ public class BienestarInterfaz extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtIdEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -295,13 +370,16 @@ public class BienestarInterfaz extends javax.swing.JFrame {
                     .addComponent(fechaCierreEstdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEventoEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnPanelAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPanelAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)))
+                .addGap(62, 62, 62))
         );
 
         javax.swing.GroupLayout DetallesLayout = new javax.swing.GroupLayout(Detalles.getContentPane());
@@ -358,7 +436,7 @@ public class BienestarInterfaz extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        panelBoton.setBackground(new java.awt.Color(0, 0, 204));
+        panelBoton.setBackground(new java.awt.Color(51, 51, 255));
         panelBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panelBoton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -393,7 +471,7 @@ public class BienestarInterfaz extends javax.swing.JFrame {
                 .addGap(29, 29, 29))
         );
 
-        panelBoton2.setBackground(new java.awt.Color(0, 0, 204));
+        panelBoton2.setBackground(new java.awt.Color(51, 51, 255));
         panelBoton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panelBoton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -467,19 +545,9 @@ public class BienestarInterfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        Detalles.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void comboEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEstadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboEstadoActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        actualizarEstadoEvento();
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void panelBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBotonMouseClicked
         // TODO add your handling code here:
@@ -517,9 +585,9 @@ public class BienestarInterfaz extends javax.swing.JFrame {
 
     private void panelBotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBotonMouseExited
         // TODO add your handling code here:
-        Border borde = BorderFactory.createLineBorder(new java.awt.Color(0,0,204),1);
+        Border borde = BorderFactory.createLineBorder(new java.awt.Color(51,51,255),1);
         panelBoton.setBorder(borde);
-        panelBoton.setBackground(new java.awt.Color(0,0,204));
+        panelBoton.setBackground(new java.awt.Color(51,51,255));
     }//GEN-LAST:event_panelBotonMouseExited
 
     private void panelBoton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBoton2MouseClicked
@@ -530,7 +598,7 @@ public class BienestarInterfaz extends javax.swing.JFrame {
             return;
         }
         String nombreEvento = tablaBienestar.getValueAt(selectedRow, 1).toString();
-        String nombreArchivo = DIRECTORIO_EVENTOS + nombreEvento.replaceAll("[^a-zA-Z0-9]", "-") + ".txt";
+        String nombreArchivo = DIRECTORIO_EVENTOS + nombreEvento.replaceAll("[^a-zA-Z0-9]", "") + ".txt";
 
         File archivo = new File(nombreArchivo);
         if (archivo.exists()){
@@ -550,10 +618,55 @@ public class BienestarInterfaz extends javax.swing.JFrame {
 
     private void panelBoton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBoton2MouseExited
         // TODO add your handling code here:
-        Border borde =BorderFactory.createLineBorder(new java.awt.Color(0,0,204),1);
+        Border borde =BorderFactory.createLineBorder(new java.awt.Color(51,51,255),1);
         panelBoton2.setBorder(borde);
-        panelBoton2.setBackground(new java.awt.Color(0,0,204));
+        panelBoton2.setBackground(new java.awt.Color(51,51,255));
     }//GEN-LAST:event_panelBoton2MouseExited
+
+    private void btnPanelAtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanelAtrasMouseClicked
+        // TODO add your handling code here:
+         Detalles.dispose();
+    }//GEN-LAST:event_btnPanelAtrasMouseClicked
+
+    private void btnPanelAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanelAceptarMouseClicked
+        // TODO add your handling code here:
+         actualizarEstadoEvento();
+    }//GEN-LAST:event_btnPanelAceptarMouseClicked
+
+    private void comboEstadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboEstadoMouseEntered
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_comboEstadoMouseEntered
+
+    private void btnPanelAceptarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanelAceptarMouseEntered
+        // TODO add your handling code here::normal=[0,0,51,5 al pasar mause=0,51,209
+        Border bordeNormal = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        btnPanelAceptar.setBorder(bordeNormal);
+        btnPanelAceptar.setBackground(new java.awt.Color(0,51,209));
+        
+        
+    }//GEN-LAST:event_btnPanelAceptarMouseEntered
+
+    private void btnPanelAceptarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanelAceptarMouseExited
+        // TODO add your handling code here:
+         Border borde = BorderFactory.createLineBorder(new java.awt.Color(51,51,255),1);
+        btnPanelAceptar.setBorder(borde);
+        btnPanelAceptar.setBackground(new java.awt.Color(51,51,255));
+    }//GEN-LAST:event_btnPanelAceptarMouseExited
+
+    private void btnPanelAtrasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanelAtrasMouseEntered
+        // TODO add your handling code here:
+         Border bordeNormal = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        btnPanelAtras.setBorder(bordeNormal);
+        btnPanelAtras.setBackground(new java.awt.Color(0,51,209));
+    }//GEN-LAST:event_btnPanelAtrasMouseEntered
+
+    private void btnPanelAtrasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanelAtrasMouseExited
+        // TODO add your handling code here:
+         Border borde = BorderFactory.createLineBorder(new java.awt.Color(51,51,255),1);
+        btnPanelAtras.setBorder(borde);
+        btnPanelAtras.setBackground(new java.awt.Color(51,51,255));
+    }//GEN-LAST:event_btnPanelAtrasMouseExited
 
     /**
      * @param args the command line arguments
@@ -593,12 +706,15 @@ public class BienestarInterfaz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog Detalles;
+    private javax.swing.JPanel btnPanelAceptar;
+    private javax.swing.JPanel btnPanelAtras;
     private javax.swing.JComboBox<String> comboEstado;
     private javax.swing.JTextField fechaCierreEstdo;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

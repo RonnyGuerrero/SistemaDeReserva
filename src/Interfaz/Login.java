@@ -7,6 +7,8 @@ import DAO.*;
 import Model.*;
 import java.util.HashSet;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
+import javax.swing.BorderFactory;
 /**
  *
  * @author Usuario
@@ -19,7 +21,7 @@ RegistroDAO registro= new RegistroDAO();
     public Login() {
         initComponents();
          setResizable(false);
-        setLocationRelativeTo(null);
+         setLocationRelativeTo(null);
          Registro.setLocationRelativeTo(login);
         
     }
@@ -36,7 +38,8 @@ RegistroDAO registro= new RegistroDAO();
         Registro = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
         comboTipoUsuario = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
+        btnAtrasPanel = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         Estudiante = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
         txtApellidoestudiante = new javax.swing.JTextField();
@@ -46,10 +49,12 @@ RegistroDAO registro= new RegistroDAO();
         txtCelularestudiante = new javax.swing.JTextField();
         txtNombreestudiante = new javax.swing.JTextField();
         txtIDestudiante = new javax.swing.JTextField();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
         txtSemestreestudiante = new javax.swing.JTextField();
         comboboxGeneroEstudiantee = new javax.swing.JComboBox<>();
+        btnPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        btnPanel1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         Profesor = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         txtApellidoprofesor = new javax.swing.JTextField();
@@ -57,18 +62,18 @@ RegistroDAO registro= new RegistroDAO();
         txtProgramaprofesor = new javax.swing.JTextField();
         txtNombreprofesor = new javax.swing.JTextField();
         txtProfesionprofesor = new javax.swing.JTextField();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
         txtGmailprofesor = new javax.swing.JTextField();
         txtCelularprofesor = new javax.swing.JTextField();
         txtIDprofesor = new javax.swing.JTextField();
         comboBoxGeneroProfesor = new javax.swing.JComboBox<>();
+        btnPanelRegistrar5 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        btnPanelRegresar4 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
         BienestarDialogo = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
         txtNombrebienestar = new javax.swing.JTextField();
         txtIDbienestar = new javax.swing.JTextField();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
         txtApellidobienestar = new javax.swing.JTextField();
         txtOficionbienestar = new javax.swing.JTextField();
         txtDepartamentobienestar = new javax.swing.JTextField();
@@ -76,28 +81,65 @@ RegistroDAO registro= new RegistroDAO();
         txtDireccionbienestar = new javax.swing.JTextField();
         txtCelularbienestar = new javax.swing.JTextField();
         comoboBoxGeneroBienestar = new javax.swing.JComboBox<>();
+        BTNregistrar = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        btnREGRESAR = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
         login = new javax.swing.JPanel();
         txtIDLogin = new javax.swing.JTextField();
         txtGmailLogin = new javax.swing.JTextField();
-        btnRegistrarUsuario = new javax.swing.JButton();
-        btnLogin = new javax.swing.JButton();
+        btnIniciarPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        btnRegistrarPanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("REGISTRO"));
+        jPanel2.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "REGISTRO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
+        comboTipoUsuario.setBackground(new java.awt.Color(51, 51, 255));
+        comboTipoUsuario.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        comboTipoUsuario.setForeground(new java.awt.Color(0, 0, 0));
         comboTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seleccionar", "estudiante", "profesor", "bienestar" }));
-        comboTipoUsuario.setBorder(javax.swing.BorderFactory.createTitledBorder("TIPO DE USUARIO"));
+        comboTipoUsuario.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TIPO DE USUARIO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         comboTipoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboTipoUsuarioActionPerformed(evt);
             }
         });
 
-        jButton3.setText("ATRAS");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+        btnAtrasPanel.setBackground(new java.awt.Color(51, 51, 255));
+        btnAtrasPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAtrasPanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAtrasPanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAtrasPanelMouseExited(evt);
             }
         });
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("ATRAS");
+
+        javax.swing.GroupLayout btnAtrasPanelLayout = new javax.swing.GroupLayout(btnAtrasPanel);
+        btnAtrasPanel.setLayout(btnAtrasPanelLayout);
+        btnAtrasPanelLayout.setHorizontalGroup(
+            btnAtrasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnAtrasPanelLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel3)
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        btnAtrasPanelLayout.setVerticalGroup(
+            btnAtrasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnAtrasPanelLayout.createSequentialGroup()
+                .addContainerGap(9, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -109,8 +151,8 @@ RegistroDAO registro= new RegistroDAO();
                         .addGap(41, 41, 41)
                         .addComponent(comboTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jButton3)))
+                        .addGap(64, 64, 64)
+                        .addComponent(btnAtrasPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -118,9 +160,9 @@ RegistroDAO registro= new RegistroDAO();
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(comboTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAtrasPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout RegistroLayout = new javax.swing.GroupLayout(Registro.getContentPane());
@@ -134,7 +176,8 @@ RegistroDAO registro= new RegistroDAO();
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("ESTUDIANTE"));
+        jPanel3.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ESTUDIANTE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
         txtApellidoestudiante.setBorder(javax.swing.BorderFactory.createTitledBorder("APELLIDO"));
 
@@ -160,20 +203,6 @@ RegistroDAO registro= new RegistroDAO();
 
         txtIDestudiante.setBorder(javax.swing.BorderFactory.createTitledBorder("ID"));
 
-        jButton11.setText("REGISTRAR");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
-
-        jButton12.setText("ATRAS");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
-            }
-        });
-
         txtSemestreestudiante.setBorder(javax.swing.BorderFactory.createTitledBorder("SEMESTRE"));
         txtSemestreestudiante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,19 +213,81 @@ RegistroDAO registro= new RegistroDAO();
         comboboxGeneroEstudiantee.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "hombre", "mujer", "otro" }));
         comboboxGeneroEstudiantee.setBorder(javax.swing.BorderFactory.createTitledBorder("GENERO"));
 
+        btnPanel2.setBackground(new java.awt.Color(51, 51, 255));
+        btnPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPanel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPanel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPanel2MouseExited(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("REGISTRAR");
+
+        javax.swing.GroupLayout btnPanel2Layout = new javax.swing.GroupLayout(btnPanel2);
+        btnPanel2.setLayout(btnPanel2Layout);
+        btnPanel2Layout.setHorizontalGroup(
+            btnPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnPanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel4)
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+        btnPanel2Layout.setVerticalGroup(
+            btnPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        btnPanel1.setBackground(new java.awt.Color(51, 51, 255));
+        btnPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPanel1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPanel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPanel1MouseExited(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("REGRESAR");
+
+        javax.swing.GroupLayout btnPanel1Layout = new javax.swing.GroupLayout(btnPanel1);
+        btnPanel1.setLayout(btnPanel1Layout);
+        btnPanel1Layout.setHorizontalGroup(
+            btnPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel5)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        btnPanel1Layout.setVerticalGroup(
+            btnPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(txtNombreestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtApellidoestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCelularestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(txtIDestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -206,15 +297,23 @@ RegistroDAO registro= new RegistroDAO();
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(txtProgramaestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtSemestreestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtFacultadestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jButton11)
+                                .addComponent(txtNombreestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtApellidoestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCelularestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(133, 133, 133)
+                                .addComponent(btnPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton12))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(txtSemestreestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtFacultadestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -236,11 +335,11 @@ RegistroDAO registro= new RegistroDAO();
                     .addComponent(txtProgramaestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtFacultadestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSemestreestudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton11)
-                    .addComponent(jButton12))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout EstudianteLayout = new javax.swing.GroupLayout(Estudiante.getContentPane());
@@ -254,7 +353,8 @@ RegistroDAO registro= new RegistroDAO();
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("PROFESOR"));
+        jPanel4.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PROFESOR", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
         txtApellidoprofesor.setBorder(javax.swing.BorderFactory.createTitledBorder("APELLIDO"));
 
@@ -265,20 +365,6 @@ RegistroDAO registro= new RegistroDAO();
         txtNombreprofesor.setBorder(javax.swing.BorderFactory.createTitledBorder("NOMBRE"));
 
         txtProfesionprofesor.setBorder(javax.swing.BorderFactory.createTitledBorder("PROFESION"));
-
-        jButton7.setText("REGISTRAR");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-
-        jButton8.setText("ATRAS");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
 
         txtGmailprofesor.setBorder(javax.swing.BorderFactory.createTitledBorder("GMAIL"));
 
@@ -299,6 +385,74 @@ RegistroDAO registro= new RegistroDAO();
             }
         });
 
+        btnPanelRegistrar5.setBackground(new java.awt.Color(51, 51, 255));
+        btnPanelRegistrar5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPanelRegistrar5MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPanelRegistrar5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPanelRegistrar5MouseExited(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("REGISTRAR");
+
+        javax.swing.GroupLayout btnPanelRegistrar5Layout = new javax.swing.GroupLayout(btnPanelRegistrar5);
+        btnPanelRegistrar5.setLayout(btnPanelRegistrar5Layout);
+        btnPanelRegistrar5Layout.setHorizontalGroup(
+            btnPanelRegistrar5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnPanelRegistrar5Layout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(23, 23, 23))
+        );
+        btnPanelRegistrar5Layout.setVerticalGroup(
+            btnPanelRegistrar5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnPanelRegistrar5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addContainerGap())
+        );
+
+        btnPanelRegresar4.setBackground(new java.awt.Color(51, 51, 255));
+        btnPanelRegresar4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPanelRegresar4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPanelRegresar4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPanelRegresar4MouseExited(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("REGRESAR");
+
+        javax.swing.GroupLayout btnPanelRegresar4Layout = new javax.swing.GroupLayout(btnPanelRegresar4);
+        btnPanelRegresar4.setLayout(btnPanelRegresar4Layout);
+        btnPanelRegresar4Layout.setHorizontalGroup(
+            btnPanelRegresar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnPanelRegresar4Layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(17, 17, 17))
+        );
+        btnPanelRegresar4Layout.setVerticalGroup(
+            btnPanelRegresar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnPanelRegresar4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -307,29 +461,31 @@ RegistroDAO registro= new RegistroDAO();
                 .addGap(24, 24, 24)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(txtNombreprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtApellidoprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCelularprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(txtIDprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtGmailprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(comboBoxGeneroProfesor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(txtProgramaprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jButton7)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton8))
+                                .addComponent(txtNombreprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtApellidoprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCelularprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(txtProgramaprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtFacultadprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtProfesionprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtProfesionprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(137, 137, 137)
+                                .addComponent(btnPanelRegistrar5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnPanelRegresar4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -351,11 +507,11 @@ RegistroDAO registro= new RegistroDAO();
                     .addComponent(txtProgramaprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtFacultadprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtProfesionprofesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton7)
-                    .addComponent(jButton8))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnPanelRegistrar5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPanelRegresar4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(58, 58, 58))
         );
 
         javax.swing.GroupLayout ProfesorLayout = new javax.swing.GroupLayout(Profesor.getContentPane());
@@ -374,20 +530,6 @@ RegistroDAO registro= new RegistroDAO();
         txtNombrebienestar.setBorder(javax.swing.BorderFactory.createTitledBorder("NOMBRE"));
 
         txtIDbienestar.setBorder(javax.swing.BorderFactory.createTitledBorder("ID"));
-
-        jButton13.setText("REGISTRAR");
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
-            }
-        });
-
-        jButton14.setText("ATRAS");
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
-            }
-        });
 
         txtApellidobienestar.setBorder(javax.swing.BorderFactory.createTitledBorder("APELLIDO"));
 
@@ -424,6 +566,74 @@ RegistroDAO registro= new RegistroDAO();
             }
         });
 
+        BTNregistrar.setBackground(new java.awt.Color(51, 51, 255));
+        BTNregistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BTNregistrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BTNregistrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BTNregistrarMouseExited(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setText("REGISTRAR");
+
+        javax.swing.GroupLayout BTNregistrarLayout = new javax.swing.GroupLayout(BTNregistrar);
+        BTNregistrar.setLayout(BTNregistrarLayout);
+        BTNregistrarLayout.setHorizontalGroup(
+            BTNregistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BTNregistrarLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel12)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        BTNregistrarLayout.setVerticalGroup(
+            BTNregistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BTNregistrarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        btnREGRESAR.setBackground(new java.awt.Color(51, 51, 255));
+        btnREGRESAR.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnREGRESARMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnREGRESARMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnREGRESARMouseExited(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("REGRESAR");
+
+        javax.swing.GroupLayout btnREGRESARLayout = new javax.swing.GroupLayout(btnREGRESAR);
+        btnREGRESAR.setLayout(btnREGRESARLayout);
+        btnREGRESARLayout.setHorizontalGroup(
+            btnREGRESARLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnREGRESARLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel11)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+        btnREGRESARLayout.setVerticalGroup(
+            btnREGRESARLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnREGRESARLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -446,15 +656,14 @@ RegistroDAO registro= new RegistroDAO();
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(txtDireccionbienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jButton13)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton14))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(txtOficionbienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDepartamentobienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(txtOficionbienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDepartamentobienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(BTNregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnREGRESAR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(105, 105, 105)))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -475,11 +684,11 @@ RegistroDAO registro= new RegistroDAO();
                     .addComponent(txtDireccionbienestar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDepartamentobienestar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtOficionbienestar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton13)
-                    .addComponent(jButton14))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(BTNregistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnREGRESAR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout BienestarDialogoLayout = new javax.swing.GroupLayout(BienestarDialogo.getContentPane());
@@ -495,25 +704,85 @@ RegistroDAO registro= new RegistroDAO();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        login.setBorder(javax.swing.BorderFactory.createTitledBorder("SISTEMA DE SOLICITUD"));
+        login.setBackground(new java.awt.Color(102, 204, 255));
+        login.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SISTEMA DE SOLICITUD", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
         txtIDLogin.setBorder(javax.swing.BorderFactory.createTitledBorder("ID"));
 
         txtGmailLogin.setBorder(javax.swing.BorderFactory.createTitledBorder("GMAIL:"));
 
-        btnRegistrarUsuario.setText("REGISTRAR");
-        btnRegistrarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarUsuarioActionPerformed(evt);
+        btnIniciarPanel.setBackground(new java.awt.Color(51, 51, 255));
+        btnIniciarPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnIniciarPanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnIniciarPanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnIniciarPanelMouseExited(evt);
             }
         });
 
-        btnLogin.setText("INICIAR");
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("INICIAR");
+
+        javax.swing.GroupLayout btnIniciarPanelLayout = new javax.swing.GroupLayout(btnIniciarPanel);
+        btnIniciarPanel.setLayout(btnIniciarPanelLayout);
+        btnIniciarPanelLayout.setHorizontalGroup(
+            btnIniciarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnIniciarPanelLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        btnIniciarPanelLayout.setVerticalGroup(
+            btnIniciarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnIniciarPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
+        );
+
+        btnRegistrarPanel.setBackground(new java.awt.Color(51, 51, 255));
+        btnRegistrarPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegistrarPanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRegistrarPanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRegistrarPanelMouseExited(evt);
             }
         });
+        btnRegistrarPanel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnRegistrarPanelKeyPressed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("REGISTRAR");
+
+        javax.swing.GroupLayout btnRegistrarPanelLayout = new javax.swing.GroupLayout(btnRegistrarPanel);
+        btnRegistrarPanel.setLayout(btnRegistrarPanelLayout);
+        btnRegistrarPanelLayout.setHorizontalGroup(
+            btnRegistrarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnRegistrarPanelLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel2)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+        btnRegistrarPanelLayout.setVerticalGroup(
+            btnRegistrarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnRegistrarPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout loginLayout = new javax.swing.GroupLayout(login);
         login.setLayout(loginLayout);
@@ -523,14 +792,13 @@ RegistroDAO registro= new RegistroDAO();
                 .addContainerGap(149, Short.MAX_VALUE)
                 .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
-                        .addComponent(btnRegistrarUsuario)
-                        .addGap(160, 160, 160))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
-                        .addComponent(btnLogin)
-                        .addGap(170, 170, 170))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
                         .addComponent(txtIDLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(115, 115, 115))))
+                        .addGap(115, 115, 115))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
+                        .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnIniciarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRegistrarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(140, 140, 140))))
             .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
                     .addContainerGap(150, Short.MAX_VALUE)
@@ -542,11 +810,11 @@ RegistroDAO registro= new RegistroDAO();
             .addGroup(loginLayout.createSequentialGroup()
                 .addGap(106, 106, 106)
                 .addComponent(txtIDLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-                .addComponent(btnLogin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRegistrarUsuario)
-                .addContainerGap())
+                .addGap(59, 59, 59)
+                .addComponent(btnIniciarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(btnRegistrarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69))
             .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(loginLayout.createSequentialGroup()
                     .addGap(33, 33, 33)
@@ -568,12 +836,6 @@ RegistroDAO registro= new RegistroDAO();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarUsuarioActionPerformed
-        // TODO add your handling code here:
-        Registro.setVisible(true);
-        Registro.setSize(269, 200);
-    }//GEN-LAST:event_btnRegistrarUsuarioActionPerformed
-
     private void comboTipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoUsuarioActionPerformed
         // TODO add your handling code here:
         combo();
@@ -581,11 +843,6 @@ RegistroDAO registro= new RegistroDAO();
         
         
     }//GEN-LAST:event_comboTipoUsuarioActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        Registro.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txtCelularestudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCelularestudianteActionPerformed
         // TODO add your handling code here:
@@ -611,50 +868,9 @@ RegistroDAO registro= new RegistroDAO();
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCelularbienestarActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
-        Estudiante.dispose();
-        
-    }//GEN-LAST:event_jButton12ActionPerformed
-
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        // TODO add your handling code here:
-        BienestarDialogo.dispose();
-    }//GEN-LAST:event_jButton14ActionPerformed
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-      registrarEstudiante();
-      Estudiante.dispose();
-      Registro.dispose();
-    }//GEN-LAST:event_jButton11ActionPerformed
-
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-registrarBienestar();
-
-BienestarDialogo.dispose();
-Registro.dispose();
-    }//GEN-LAST:event_jButton13ActionPerformed
-
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        login();
-    }//GEN-LAST:event_btnLoginActionPerformed
-
     private void txtCelularprofesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCelularprofesorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCelularprofesorActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-
-        Profesor.dispose();
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        registrarProfesor();
-
-        Profesor.dispose();
-        Registro.dispose();
-    }//GEN-LAST:event_jButton7ActionPerformed
 
     private void comboBoxGeneroProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxGeneroProfesorActionPerformed
         // TODO add your handling code here:
@@ -663,6 +879,194 @@ Registro.dispose();
     private void comoboBoxGeneroBienestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comoboBoxGeneroBienestarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comoboBoxGeneroBienestarActionPerformed
+
+    private void btnIniciarPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarPanelMouseClicked
+        // TODO add your handling code here:
+         login();
+    }//GEN-LAST:event_btnIniciarPanelMouseClicked
+
+    private void btnRegistrarPanelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnRegistrarPanelKeyPressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnRegistrarPanelKeyPressed
+
+    private void btnIniciarPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarPanelMouseEntered
+        // TODO add your handling code here:normal=[0,0,51],5  al pasar mause=0,51,209
+        Border bordeNuevo = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        btnIniciarPanel.setBorder(bordeNuevo);
+        btnIniciarPanel.setBackground(new java.awt.Color(0,51,209));
+        
+    }//GEN-LAST:event_btnIniciarPanelMouseEntered
+
+    private void btnRegistrarPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarPanelMouseClicked
+        // TODO add your handling code here:
+        Registro.setVisible(true);
+        Registro.setSize(269, 200);
+    }//GEN-LAST:event_btnRegistrarPanelMouseClicked
+
+    private void btnIniciarPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarPanelMouseExited
+        // TODO add your handling code here:
+        Border dorde = BorderFactory.createLineBorder(new java.awt.Color(51,51,255),1);
+        btnIniciarPanel.setBorder(dorde);
+        btnIniciarPanel.setBackground(new java.awt.Color(51,51,255));
+    }//GEN-LAST:event_btnIniciarPanelMouseExited
+
+    private void btnRegistrarPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarPanelMouseEntered
+        // TODO add your handling code here:
+        Border bordeNormal = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        btnRegistrarPanel.setBorder(bordeNormal);
+        btnRegistrarPanel.setBackground(new java.awt.Color(0,51,209));
+               
+        
+    }//GEN-LAST:event_btnRegistrarPanelMouseEntered
+
+    private void btnRegistrarPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarPanelMouseExited
+        // TODO add your handling code here:
+        Border borde = BorderFactory.createLineBorder(new java.awt.Color(51,51,255),1);
+        btnRegistrarPanel.setBorder(borde);
+        btnRegistrarPanel.setBackground(new java.awt.Color(51,51,255));
+                
+    }//GEN-LAST:event_btnRegistrarPanelMouseExited
+
+    private void btnAtrasPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAtrasPanelMouseClicked
+        // TODO add your handling code here:
+        Registro.dispose();
+    }//GEN-LAST:event_btnAtrasPanelMouseClicked
+
+    private void btnAtrasPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAtrasPanelMouseEntered
+        // TODO add your handling code here:
+        Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        btnAtrasPanel.setBackground(new java.awt.Color(0,51,209));
+        btnAtrasPanel.setBorder(nuevoBorte);
+    }//GEN-LAST:event_btnAtrasPanelMouseEntered
+
+    private void btnAtrasPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAtrasPanelMouseExited
+        // TODO add your handling code here:
+        Border nuevo = BorderFactory.createLineBorder(new java.awt.Color(51,51,255),1);
+        btnAtrasPanel.setBackground(new java.awt.Color(51,51,255));
+        btnAtrasPanel.setBorder(nuevo);
+    }//GEN-LAST:event_btnAtrasPanelMouseExited
+
+    private void btnPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanel2MouseClicked
+        // TODO add your handling code here:
+        registrarEstudiante();
+      Estudiante.dispose();
+      Registro.dispose();
+    }//GEN-LAST:event_btnPanel2MouseClicked
+
+    private void btnPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanel1MouseClicked
+        // TODO add your handling code here:
+        Estudiante.dispose();
+    }//GEN-LAST:event_btnPanel1MouseClicked
+
+    private void btnPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanel1MouseEntered
+        // TODO add your handling code here:
+          Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+           btnPanel1.setBackground(new java.awt.Color(0,51,209));
+            btnPanel1.setBorder(nuevoBorte);
+    }//GEN-LAST:event_btnPanel1MouseEntered
+
+    private void btnPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanel1MouseExited
+        // TODO add your handling code here:
+        Border nuevo = BorderFactory.createLineBorder(new java.awt.Color(51,51,255),1);
+        btnPanel1.setBackground(new java.awt.Color(51,51,255));
+        btnPanel1.setBorder(nuevo);
+    }//GEN-LAST:event_btnPanel1MouseExited
+
+    private void btnPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanel2MouseEntered
+        // TODO add your handling code here:
+        Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        btnPanel2.setBackground(new java.awt.Color(0,51,209));
+        btnPanel2.setBorder(nuevoBorte);
+    }//GEN-LAST:event_btnPanel2MouseEntered
+
+    private void btnPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanel2MouseExited
+        // TODO add your handling code here:
+        Border nuevo = BorderFactory.createLineBorder(new java.awt.Color(51,51,255),1);
+        btnPanel2.setBackground(new java.awt.Color(51,51,255));
+        btnPanel2.setBorder(nuevo);
+    }//GEN-LAST:event_btnPanel2MouseExited
+
+    private void btnPanelRegistrar5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanelRegistrar5MouseClicked
+        // TODO add your handling code here:
+         registrarProfesor();
+
+        Profesor.dispose();
+        Registro.dispose();
+    }//GEN-LAST:event_btnPanelRegistrar5MouseClicked
+
+    private void btnPanelRegresar4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanelRegresar4MouseClicked
+        // TODO add your handling code here:
+        Profesor.dispose();
+    }//GEN-LAST:event_btnPanelRegresar4MouseClicked
+
+    private void btnPanelRegistrar5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanelRegistrar5MouseEntered
+        // TODO add your handling code here:
+         Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        btnPanelRegistrar5.setBackground(new java.awt.Color(0,51,209));
+        btnPanelRegistrar5.setBorder(nuevoBorte);
+    }//GEN-LAST:event_btnPanelRegistrar5MouseEntered
+
+    private void btnPanelRegistrar5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanelRegistrar5MouseExited
+        // TODO add your handling code here:
+         Border nuevo = BorderFactory.createLineBorder(new java.awt.Color(51,51,255),1);
+        btnPanelRegistrar5.setBackground(new java.awt.Color(51,51,255));
+        btnPanelRegistrar5.setBorder(nuevo);
+    }//GEN-LAST:event_btnPanelRegistrar5MouseExited
+
+    private void btnPanelRegresar4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanelRegresar4MouseEntered
+        // TODO add your handling code here:
+         Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        btnPanelRegresar4.setBackground(new java.awt.Color(0,51,209));
+        btnPanelRegresar4.setBorder(nuevoBorte);
+    }//GEN-LAST:event_btnPanelRegresar4MouseEntered
+
+    private void btnPanelRegresar4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanelRegresar4MouseExited
+        // TODO add your handling code here:
+         Border nuevo = BorderFactory.createLineBorder(new java.awt.Color(51,51,255),1);
+        btnPanelRegresar4.setBackground(new java.awt.Color(51,51,255));
+        btnPanelRegresar4.setBorder(nuevo);
+    }//GEN-LAST:event_btnPanelRegresar4MouseExited
+
+    private void BTNregistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNregistrarMouseClicked
+        // TODO add your handling code here:
+        registrarBienestar();
+        BienestarDialogo.dispose();
+        Registro.dispose();
+    }//GEN-LAST:event_BTNregistrarMouseClicked
+
+    private void BTNregistrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNregistrarMouseEntered
+        // TODO add your handling code here:
+        Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        BTNregistrar.setBackground(new java.awt.Color(0,51,209));
+        BTNregistrar.setBorder(nuevoBorte);
+    }//GEN-LAST:event_BTNregistrarMouseEntered
+
+    private void BTNregistrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNregistrarMouseExited
+        // TODO add your handling code here:
+        Border nuevo = BorderFactory.createLineBorder(new java.awt.Color(51,51,255),1);
+        BTNregistrar.setBackground(new java.awt.Color(51,51,255));
+        BTNregistrar.setBorder(nuevo);
+    }//GEN-LAST:event_BTNregistrarMouseExited
+
+    private void btnREGRESARMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnREGRESARMouseClicked
+        // TODO add your handling code here:
+        BienestarDialogo.dispose();
+    }//GEN-LAST:event_btnREGRESARMouseClicked
+
+    private void btnREGRESARMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnREGRESARMouseEntered
+        // TODO add your handling code here:
+        Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        btnREGRESAR.setBackground(new java.awt.Color(0,51,209));
+        btnREGRESAR.setBorder(nuevoBorte);
+    }//GEN-LAST:event_btnREGRESARMouseEntered
+
+    private void btnREGRESARMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnREGRESARMouseExited
+        // TODO add your handling code here:
+        Border nuevo = BorderFactory.createLineBorder(new java.awt.Color(51,51,255),1);
+        btnREGRESAR.setBackground(new java.awt.Color(51,51,255));
+        btnREGRESAR.setBorder(nuevo);
+    }//GEN-LAST:event_btnREGRESARMouseExited
 
     /**
      * @param args the command line arguments
@@ -700,23 +1104,36 @@ Registro.dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel BTNregistrar;
     private javax.swing.JDialog BienestarDialogo;
     private javax.swing.JDialog Estudiante;
     private javax.swing.JDialog Profesor;
     private javax.swing.JDialog Registro;
-    private javax.swing.JButton btnLogin;
-    private javax.swing.JButton btnRegistrarUsuario;
+    private javax.swing.JPanel btnAtrasPanel;
+    private javax.swing.JPanel btnIniciarPanel;
+    private javax.swing.JPanel btnPanel1;
+    private javax.swing.JPanel btnPanel2;
+    private javax.swing.JPanel btnPanelRegistrar5;
+    private javax.swing.JPanel btnPanelRegistrar6;
+    private javax.swing.JPanel btnPanelRegistrar7;
+    private javax.swing.JPanel btnPanelRegresar4;
+    private javax.swing.JPanel btnREGRESAR;
+    private javax.swing.JPanel btnRegistrarPanel;
     private javax.swing.JComboBox<String> comboBoxGeneroProfesor;
     private javax.swing.JComboBox<String> comboTipoUsuario;
     private javax.swing.JComboBox<String> comboboxGeneroEstudiantee;
     private javax.swing.JComboBox<String> comoboBoxGeneroBienestar;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -776,7 +1193,7 @@ public void registrarEstudiante(){
     Estudiante estudiante = new Estudiante();
     
    
-   estudiante.setId(txtIDLogin.getText());
+   estudiante.setId(txtIDestudiante.getText());
    estudiante.setNombre(txtNombreestudiante.getText());
    estudiante.setGmail(txtGmailestudiante.getText());
    estudiante.setApellido(txtApellidoestudiante.getText());

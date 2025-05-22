@@ -31,7 +31,7 @@ private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop
     public ProfesorInterfas() {
         initComponents();
         setLocationRelativeTo(null);
-        
+         setResizable(false);
         limpiarTabla();
         cargarEventosDesdeArchivo();
     }
@@ -109,13 +109,14 @@ private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop
 
         Agregar = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
-        txtDescripcion = new javax.swing.JTextField();
         txtEvento = new javax.swing.JTextField();
-        btnAgregarEvento = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         dateINICIO = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
+        btnAgregarEvento = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtDescripcion = new javax.swing.JTextArea();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         btnAgregar = new javax.swing.JPanel();
@@ -127,18 +128,11 @@ private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop
         btnActualizar = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         ModelSolicitudes1 = new javax.swing.JTable();
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("AGREGAR"));
-
-        txtDescripcion.setBorder(javax.swing.BorderFactory.createTitledBorder("DESCRIPCION"));
-        txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDescripcionActionPerformed(evt);
-            }
-        });
+        jPanel4.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "AGREGAR", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
         txtEvento.setBorder(javax.swing.BorderFactory.createTitledBorder("EVENTO"));
         txtEvento.addActionListener(new java.awt.event.ActionListener() {
@@ -147,20 +141,25 @@ private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop
             }
         });
 
-        btnAgregarEvento.setText("AGREGAR");
-        btnAgregarEvento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarEventoActionPerformed(evt);
+        btnRegresar.setBackground(new java.awt.Color(51, 51, 255));
+        btnRegresar.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btnRegresar.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegresar.setText("REGRESAR");
+        btnRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRegresarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRegresarMouseExited(evt);
             }
         });
-
-        btnRegresar.setText("REGRESAR");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("FECHA INICIO");
 
         txtNombre.setBorder(javax.swing.BorderFactory.createTitledBorder("NOMBRE"));
@@ -170,32 +169,50 @@ private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop
             }
         });
 
+        btnAgregarEvento.setBackground(new java.awt.Color(51, 51, 255));
+        btnAgregarEvento.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btnAgregarEvento.setForeground(new java.awt.Color(0, 0, 0));
+        btnAgregarEvento.setText("AGREGAR");
+        btnAgregarEvento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgregarEventoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarEventoMouseExited(evt);
+            }
+        });
+        btnAgregarEvento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarEventoActionPerformed(evt);
+            }
+        });
+
+        txtDescripcion.setColumns(20);
+        txtDescripcion.setRows(5);
+        txtDescripcion.setBorder(javax.swing.BorderFactory.createTitledBorder("DESCRIPCION"));
+        jScrollPane1.setViewportView(txtDescripcion);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(dateINICIO, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEvento)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(dateINICIO, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtNombre))
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addGap(44, 44, 44)
-                                    .addComponent(btnAgregarEvento)
-                                    .addGap(32, 32, 32)
-                                    .addComponent(btnRegresar))
-                                .addComponent(txtEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(113, Short.MAX_VALUE))))
+                        .addGap(70, 70, 70)
+                        .addComponent(btnAgregarEvento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnRegresar))
+                    .addComponent(jScrollPane1))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,13 +226,13 @@ private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(txtEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregarEvento)
-                    .addComponent(btnRegresar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnRegresar)
+                    .addComponent(btnAgregarEvento))
+                .addGap(14, 14, 14))
         );
 
         javax.swing.GroupLayout AgregarLayout = new javax.swing.GroupLayout(Agregar.getContentPane());
@@ -231,6 +248,8 @@ private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel5.setBackground(new java.awt.Color(102, 204, 255));
+
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("SISTEMA DE SOLICITUD"));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -244,7 +263,7 @@ private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop
             .addGap(0, 117, Short.MAX_VALUE)
         );
 
-        btnAgregar.setBackground(new java.awt.Color(0, 0, 204));
+        btnAgregar.setBackground(new java.awt.Color(51, 51, 255));
         btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -276,7 +295,7 @@ private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop
                     .addGroup(btnAgregarLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         btnAgregarLayout.setVerticalGroup(
             btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,7 +307,7 @@ private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop
                 .addContainerGap())
         );
 
-        btnEliminar.setBackground(new java.awt.Color(0, 0, 204));
+        btnEliminar.setBackground(new java.awt.Color(51, 51, 255));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEliminarMouseClicked(evt);
@@ -318,7 +337,7 @@ private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop
             .addGroup(btnEliminarLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         btnEliminarLayout.setVerticalGroup(
             btnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,7 +349,7 @@ private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop
                 .addContainerGap())
         );
 
-        btnActualizar.setBackground(new java.awt.Color(0, 0, 204));
+        btnActualizar.setBackground(new java.awt.Color(51, 51, 255));
         btnActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnActualizarMouseClicked(evt);
@@ -374,13 +393,19 @@ private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnActualizar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -395,17 +420,8 @@ private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 23, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
+        ModelSolicitudes1.setBackground(new java.awt.Color(204, 204, 204));
+        ModelSolicitudes1.setForeground(new java.awt.Color(0, 0, 0));
         ModelSolicitudes1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -442,88 +458,23 @@ private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 831, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 866, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3))
+                .addComponent(jScrollPane3)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDescripcionActionPerformed
-
     private void txtEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEventoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEventoActionPerformed
-
-    private void btnAgregarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEventoActionPerformed
-       
-        agregarATabla(); 
-        agregarAArchivo();
-        limpiarCampos();
-
-        Agregar.dispose();
-        
-    }                                          
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-       int selectedRow = ModelSolicitudes1.getSelectedRow();
-    if(selectedRow == -1) {
-        JOptionPane.showMessageDialog(this, "Seleccione una fila para actualizar", "Advertencia", JOptionPane.WARNING_MESSAGE);
-        return;
-    }
-    // guarda el nombre del evento 
-    final String nombreEventoOrigianl = ModelSolicitudes1.getValueAt(selectedRow, 1).toString();
-    
-    
-    // Mostrar diálogo de edición con los datos actuales
-    Agregar.setVisible(true);
-    Agregar.setSize(365, 410);
-    Agregar.setLocationRelativeTo(null);
-    
-    // Llenar campos con datos existentes
-    txtEvento.setText(ModelSolicitudes1.getValueAt(selectedRow, 1).toString());
-    txtDescripcion.setText(ModelSolicitudes1.getValueAt(selectedRow, 2).toString());
-    
-    // Configurar botón para actualizar en lugar de agregar
-    btnAgregarEvento.setText("ACTUALIZAR");
-    btnAgregarEvento.removeActionListener(btnAgregarEvento.getActionListeners()[0]);
-    btnAgregarEvento.addActionListener(e -> {
-        
-        String nombreArchivoOriginal = DIRECTORIO_EVENTO + nombreEventoOrigianl.replaceAll("[^a-zA-Z0-9]", 
-                "_")+ ".txt";
-              File archivoOriginal = new File(nombreArchivoOriginal);
-              if (archivoOriginal.exists()){
-                  archivoOriginal.delete();
-              }
-            
-            actualizarFila(selectedRow);
-            agregarAArchivo();
-            limpiarCampos();
-            Agregar.dispose();
-        
-    });
-
-    }//GEN-LAST:event_btnAgregarEventoActionPerformed
-
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        // TODO add your handling code here:
-        Agregar.dispose();
-
-    }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
@@ -609,8 +560,8 @@ private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop
 
     private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
         // TODO add your handling code here:
-        Border borde = BorderFactory.createLineBorder(new java.awt.Color(0,0,204),1);
-        btnAgregar.setBackground(new java.awt.Color(0,0,204));
+        Border borde = BorderFactory.createLineBorder(new java.awt.Color(51,51,255),1);
+        btnAgregar.setBackground(new java.awt.Color(51,51,255));
         btnAgregar.setBorder(borde);
     }//GEN-LAST:event_btnAgregarMouseExited
 
@@ -623,8 +574,8 @@ private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop
 
     private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
         // TODO add your handling code here:
-        Border borde = BorderFactory.createLineBorder(new java.awt.Color(0,0,204),1);
-        btnEliminar.setBackground(new java.awt.Color(0,0,204));
+        Border borde = BorderFactory.createLineBorder(new java.awt.Color(51,51,255),1);
+        btnEliminar.setBackground(new java.awt.Color(51,51,255));
         btnEliminar.setBorder(borde);
     }//GEN-LAST:event_btnEliminarMouseExited
 
@@ -638,10 +589,45 @@ private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop
 
     private void btnActualizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseExited
         // TODO add your handling code here:
-        Border borde = BorderFactory.createLineBorder(new java.awt.Color(0,0,204),1);
+        Border borde = BorderFactory.createLineBorder(new java.awt.Color(51,51,255),1);
         btnActualizar.setBorder(borde);
-        btnActualizar.setBackground(new java.awt.Color(0,0,204));
+        btnActualizar.setBackground(new java.awt.Color(51,51,255));
     }//GEN-LAST:event_btnActualizarMouseExited
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        // TODO add your handling code here:
+        Agregar.dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnAgregarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEventoActionPerformed
+        // TODO add your handling code here:
+        agregarATabla(); 
+        agregarAArchivo();
+        limpiarCampos();
+
+        Agregar.dispose();
+    }//GEN-LAST:event_btnAgregarEventoActionPerformed
+
+    private void btnRegresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegresarMouseEntered
+        // TODO add your handling code here:}
+        
+    }//GEN-LAST:event_btnRegresarMouseEntered
+
+    private void btnRegresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegresarMouseExited
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_btnRegresarMouseExited
+
+    private void btnAgregarEventoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEventoMouseEntered
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnAgregarEventoMouseEntered
+
+    private void btnAgregarEventoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEventoMouseExited
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_btnAgregarEventoMouseExited
 
     /**
      * @param args the command line arguments
@@ -698,9 +684,9 @@ private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextArea txtDescripcion;
     private javax.swing.JTextField txtEvento;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
