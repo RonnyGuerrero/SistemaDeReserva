@@ -3,6 +3,7 @@ package Interfaz;
 
 import Model.Evento;
 import Model.Usuario;
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -18,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
+import validaciones.*;
 
 /**
  *
@@ -35,7 +37,7 @@ public class EstudianteProfesor extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
        
-    // Inicializar la tabla vacía
+    
        setResizable(false);
     limpiarTabla();
     cargarEventosDesdeArchivo();
@@ -88,7 +90,7 @@ public class EstudianteProfesor extends javax.swing.JFrame {
                       nombreEvento,
                       descripcion,
                       estado,
-                      //evento pendiente
+                      
                       
                       fechaCreada
                   });
@@ -125,6 +127,7 @@ public class EstudianteProfesor extends javax.swing.JFrame {
         txtDescripcion = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         btnPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -134,6 +137,9 @@ public class EstudianteProfesor extends javax.swing.JFrame {
         btnActualizarPanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         ModelSolicitudes = new javax.swing.JTable();
 
@@ -151,6 +157,7 @@ public class EstudianteProfesor extends javax.swing.JFrame {
         btnAgregarEvento.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         btnAgregarEvento.setForeground(new java.awt.Color(0, 0, 0));
         btnAgregarEvento.setText("AGREGAR");
+        btnAgregarEvento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregarEvento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarEventoActionPerformed(evt);
@@ -161,6 +168,7 @@ public class EstudianteProfesor extends javax.swing.JFrame {
         btnRegresar.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         btnRegresar.setForeground(new java.awt.Color(0, 0, 0));
         btnRegresar.setText("REGRESAR");
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
@@ -241,18 +249,24 @@ public class EstudianteProfesor extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("SISTEMA DE SOLICITUD"));
 
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/ChatGPT Image 23 may 2025, 01_40_18 a.m. (1) (1).png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 117, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         btnPanel.setBackground(new java.awt.Color(51, 51, 255));
+        btnPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPanelMouseClicked(evt);
@@ -295,6 +309,7 @@ public class EstudianteProfesor extends javax.swing.JFrame {
         );
 
         btnEliminarPanel.setBackground(new java.awt.Color(51, 51, 255));
+        btnEliminarPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminarPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEliminarPanelMouseClicked(evt);
@@ -338,6 +353,7 @@ public class EstudianteProfesor extends javax.swing.JFrame {
         );
 
         btnActualizarPanel.setBackground(new java.awt.Color(51, 51, 255));
+        btnActualizarPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnActualizarPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnActualizarPanelMouseClicked(evt);
@@ -377,18 +393,63 @@ public class EstudianteProfesor extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel3.setBackground(new java.awt.Color(51, 51, 255));
+        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel3MouseExited(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("INICIO");
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/inico (1).png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel9))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel10)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnActualizarPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEliminarPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 12, Short.MAX_VALUE))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,7 +461,9 @@ public class EstudianteProfesor extends javax.swing.JFrame {
                 .addComponent(btnEliminarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnActualizarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         ModelSolicitudes.setBackground(new java.awt.Color(204, 204, 204));
@@ -438,9 +501,9 @@ public class EstudianteProfesor extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 861, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 854, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -463,7 +526,7 @@ public class EstudianteProfesor extends javax.swing.JFrame {
         agregarATabla(); 
         agregarAArchivo();
         limpiarCampos();
-
+          
         Agregar.dispose();
         
     }//GEN-LAST:event_btnAgregarEventoActionPerformed
@@ -487,7 +550,7 @@ public class EstudianteProfesor extends javax.swing.JFrame {
 
     private void btnPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanelMouseEntered
         // TODO add your handling code here:normal=[0,0,51],5  al pasar mause=0,51,209
-        Border bordeNormal = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        Border bordeNormal = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),2);
         btnPanel.setBorder(bordeNormal);
         btnPanel.setBackground(new java.awt.Color(0,51,209));
            
@@ -502,31 +565,14 @@ public class EstudianteProfesor extends javax.swing.JFrame {
 
     private void btnEliminarPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarPanelMouseClicked
         // TODO add your handling code here:
-         int selectedRow = ModelSolicitudes.getSelectedRow();
-    if(selectedRow == -1) {
-        JOptionPane.showMessageDialog(this, "Seleccione una fila para eliminar", "Advertencia", JOptionPane.WARNING_MESSAGE);
-        return;
-    }
-    
-    //obtener el nombre del evento para eliminar el archivo
-    
-    String nombreEvento = ModelSolicitudes.getValueAt(selectedRow, 1).toString();
-    String nombreArchivo = DIRECTORIO_EVENTOS + nombreEvento.replaceAll("[^a-zA-Z0-9]", "_")+ ".txt";
-    
-    //elimina archivo
-    File archivo = new File(nombreArchivo);
-    if(archivo.exists()) {
-        archivo.delete();
-    }
-    
-    DefaultTableModel model = (DefaultTableModel) ModelSolicitudes.getModel();
-    model.removeRow(selectedRow);
+        eliminarEvento();
+        
         
     }//GEN-LAST:event_btnEliminarPanelMouseClicked
 
     private void btnEliminarPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarPanelMouseEntered
         // TODO add your handling code here:normal=[0,0,51],5  al pasar mause=0,51,209
-        Border bordeNormal = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        Border bordeNormal = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),2);
         btnEliminarPanel.setBorder(bordeNormal);
         btnEliminarPanel.setBackground(new java.awt.Color(0,51,209));
         
@@ -541,47 +587,12 @@ public class EstudianteProfesor extends javax.swing.JFrame {
 
     private void btnActualizarPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarPanelMouseClicked
         // TODO add your handling code here:
-         int selectedRow = ModelSolicitudes.getSelectedRow();
-    if(selectedRow == -1) {
-        JOptionPane.showMessageDialog(this, "Seleccione una fila para actualizar", "Advertencia", JOptionPane.WARNING_MESSAGE);
-        return;
-    }
-    // guarda el nombre del evento 
-    final String nombreEventoOrigianl = ModelSolicitudes.getValueAt(selectedRow, 1).toString();
-    
-    
-    // Mostrar diálogo de edición con los datos actuales
-    Agregar.setVisible(true);
-    Agregar.setSize(365, 440);
-    Agregar.setLocationRelativeTo(null);
-    
-    // Llenar campos con datos existentes
-    txtEvento.setText(ModelSolicitudes.getValueAt(selectedRow, 1).toString());
-    txtDescripcion.setText(ModelSolicitudes.getValueAt(selectedRow, 2).toString());
-    
-    // Configurar botón para actualizar en lugar de agregar
-    btnAgregarEvento.setText("ACTUALIZAR");
-    btnAgregarEvento.removeActionListener(btnAgregarEvento.getActionListeners()[0]);
-    btnAgregarEvento.addActionListener(e -> {
-        
-        String nombreArchivoOriginal = DIRECTORIO_EVENTOS + nombreEventoOrigianl.replaceAll("[^a-zA-Z0-9]", 
-                "_")+ ".txt";
-              File archivoOriginal = new File(nombreArchivoOriginal);
-              if (archivoOriginal.exists()){
-                  archivoOriginal.delete();
-              }
-            
-            actualizarFila(selectedRow);
-            agregarAArchivo();
-            limpiarCampos();
-            Agregar.dispose();
-        
-    });
+        actualizarArchivo();
     }//GEN-LAST:event_btnActualizarPanelMouseClicked
 
     private void btnActualizarPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarPanelMouseEntered
         // TODO add your handling code here:normal=[0,0,51],5  al pasar mause=0,51,209
-        Border bordeNormal = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        Border bordeNormal = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),2);
         btnActualizarPanel.setBorder(bordeNormal);
         btnActualizarPanel.setBackground(new java.awt.Color(0,51,209));
     }//GEN-LAST:event_btnActualizarPanelMouseEntered
@@ -592,6 +603,25 @@ public class EstudianteProfesor extends javax.swing.JFrame {
         btnActualizarPanel.setBorder(borde);
         btnActualizarPanel.setBackground(new java.awt.Color(51,51,255));
     }//GEN-LAST:event_btnActualizarPanelMouseExited
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        // TODO add your handling code here:
+         Login L = new Login();
+        L.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel3MouseClicked
+
+    private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
+        // TODO add your handling code here:
+        Border p = BorderFactory.createLineBorder(Color.white);
+        jPanel3.setBorder(p);
+    }//GEN-LAST:event_jPanel3MouseEntered
+
+    private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
+        // TODO add your handling code here:
+        Border o = BorderFactory.createLineBorder(null);
+        jPanel3.setBorder(o);
+    }//GEN-LAST:event_jPanel3MouseExited
 
     /**
      * @param args the command line arguments
@@ -638,14 +668,18 @@ public class EstudianteProfesor extends javax.swing.JFrame {
     private javax.swing.JButton btnRegresar;
     private com.toedter.calendar.JDateChooser dateINICIO;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -662,14 +696,14 @@ private void actualizarFila(int row) {
     ModelSolicitudes.setValueAt(fechaInicioStr, row, 0);
     ModelSolicitudes.setValueAt(txtEvento.getText(), row, 1);
     ModelSolicitudes.setValueAt(txtDescripcion.getText(), row, 2);
-    ModelSolicitudes.setValueAt(tomestamp, row, 4); //actualiza fecha modificacion
+    ModelSolicitudes.setValueAt(tomestamp, row, 4); 
     
-    // Restaurar botón a su estado original
+    
     btnAgregarEvento.setText("AGREGAR");
     btnAgregarEvento.removeActionListener(btnAgregarEvento.getActionListeners()[0]);
     btnAgregarEvento.addActionListener(this::btnAgregarEventoActionPerformed);
 }
-public void agregarATabla() {
+  public void agregarATabla() {
     Evento evento = new Evento();
     evento.setDescripcion(txtDescripcion.getText());
     evento.setFechaInicio(dateINICIO.getDate());
@@ -723,7 +757,7 @@ private void limpiarTabla() {
     evento.setFechaCreada(sdf.format(new Date()));
     
     String nombreArchivo = DIRECTORIO_EVENTOS + 
-                         nombreEvento.replaceAll("[^a-zA-Z0-9]", "_") + 
+                         nombreEvento.replaceAll("[^a-zA-Z0-9]", "") + 
                          ".txt";
     
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo))) {
@@ -744,4 +778,65 @@ private void limpiarTabla() {
         System.err.println("Error al registrar evento: " + e.getMessage());
     }
 }
+    
+    private void actualizarArchivo(){
+         int selectedRow = ModelSolicitudes.getSelectedRow();
+    if(selectedRow == -1) {
+        JOptionPane.showMessageDialog(this, "Seleccione una fila para actualizar", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+     
+    final String nombreEventoOrigianl = ModelSolicitudes.getValueAt(selectedRow, 1).toString();
+    
+    
+   
+    Agregar.setVisible(true);
+    Agregar.setSize(365, 450);
+    Agregar.setLocationRelativeTo(null);
+    
+    
+    txtEvento.setText(ModelSolicitudes.getValueAt(selectedRow, 1).toString());
+    txtDescripcion.setText(ModelSolicitudes.getValueAt(selectedRow, 2).toString());
+    
+    
+    btnAgregarEvento.setText("ACTUALIZAR");
+    btnAgregarEvento.removeActionListener(btnAgregarEvento.getActionListeners()[0]);
+    btnAgregarEvento.addActionListener(e -> {
+        
+        String nombreArchivoOriginal = DIRECTORIO_EVENTOS + nombreEventoOrigianl.replaceAll("[^a-zA-Z0-9]", 
+                "")+ ".txt";
+              File archivoOriginal = new File(nombreArchivoOriginal);
+              if (archivoOriginal.exists()){
+                  archivoOriginal.delete();
+              }
+            
+            actualizarFila(selectedRow);
+            agregarAArchivo();
+            limpiarCampos();
+            Agregar.dispose();
+        
+    });
+    }
+    
+    private void eliminarEvento(){
+         int selectedRow = ModelSolicitudes.getSelectedRow();
+    if(selectedRow == -1) {
+        JOptionPane.showMessageDialog(this, "Seleccione una fila para eliminar", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+    
+    
+    
+    String nombreEvento = ModelSolicitudes.getValueAt(selectedRow, 1).toString();
+    String nombreArchivo = DIRECTORIO_EVENTOS + nombreEvento.replaceAll("[^a-zA-Z0-9]", "")+ ".txt";
+    
+   
+    File archivo = new File(nombreArchivo);
+    if(archivo.exists()) {
+        archivo.delete();
+    }
+    
+    DefaultTableModel model = (DefaultTableModel) ModelSolicitudes.getModel();
+    model.removeRow(selectedRow);
+    }
 }

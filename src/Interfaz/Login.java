@@ -9,12 +9,20 @@ import java.util.HashSet;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
+import validaciones.GmailValidaciones;
+import validaciones.letrasValidaciones;
+import validaciones.numeroValidaciones;
+import validaciones.usuarioValidacion;
 /**
  *
  * @author Usuario
  */
 public class Login extends javax.swing.JFrame {
 RegistroDAO registro= new RegistroDAO();
+private GmailValidaciones emailValidator = new GmailValidaciones();
+    private letrasValidaciones letrasValidator = new letrasValidaciones();
+    private numeroValidaciones numeroValidator = new numeroValidaciones();
+    private usuarioValidacion usuarioValidator = new usuarioValidacion();
     /**
      * Creates new form Login
      */
@@ -101,6 +109,7 @@ RegistroDAO registro= new RegistroDAO();
         comboTipoUsuario.setForeground(new java.awt.Color(0, 0, 0));
         comboTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seleccionar", "estudiante", "profesor", "bienestar" }));
         comboTipoUsuario.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TIPO DE USUARIO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        comboTipoUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         comboTipoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboTipoUsuarioActionPerformed(evt);
@@ -108,6 +117,7 @@ RegistroDAO registro= new RegistroDAO();
         });
 
         btnAtrasPanel.setBackground(new java.awt.Color(51, 51, 255));
+        btnAtrasPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAtrasPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAtrasPanelMouseClicked(evt);
@@ -214,6 +224,7 @@ RegistroDAO registro= new RegistroDAO();
         comboboxGeneroEstudiantee.setBorder(javax.swing.BorderFactory.createTitledBorder("GENERO"));
 
         btnPanel2.setBackground(new java.awt.Color(51, 51, 255));
+        btnPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPanel2MouseClicked(evt);
@@ -248,6 +259,7 @@ RegistroDAO registro= new RegistroDAO();
         );
 
         btnPanel1.setBackground(new java.awt.Color(51, 51, 255));
+        btnPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPanel1MouseClicked(evt);
@@ -386,6 +398,7 @@ RegistroDAO registro= new RegistroDAO();
         });
 
         btnPanelRegistrar5.setBackground(new java.awt.Color(51, 51, 255));
+        btnPanelRegistrar5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPanelRegistrar5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPanelRegistrar5MouseClicked(evt);
@@ -420,6 +433,7 @@ RegistroDAO registro= new RegistroDAO();
         );
 
         btnPanelRegresar4.setBackground(new java.awt.Color(51, 51, 255));
+        btnPanelRegresar4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPanelRegresar4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPanelRegresar4MouseClicked(evt);
@@ -525,6 +539,7 @@ RegistroDAO registro= new RegistroDAO();
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jPanel5.setBackground(new java.awt.Color(102, 204, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("BIENESTAR"));
 
         txtNombrebienestar.setBorder(javax.swing.BorderFactory.createTitledBorder("NOMBRE"));
@@ -567,6 +582,7 @@ RegistroDAO registro= new RegistroDAO();
         });
 
         BTNregistrar.setBackground(new java.awt.Color(51, 51, 255));
+        BTNregistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BTNregistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BTNregistrarMouseClicked(evt);
@@ -601,6 +617,7 @@ RegistroDAO registro= new RegistroDAO();
         );
 
         btnREGRESAR.setBackground(new java.awt.Color(51, 51, 255));
+        btnREGRESAR.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnREGRESAR.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnREGRESARMouseClicked(evt);
@@ -712,6 +729,7 @@ RegistroDAO registro= new RegistroDAO();
         txtGmailLogin.setBorder(javax.swing.BorderFactory.createTitledBorder("GMAIL:"));
 
         btnIniciarPanel.setBackground(new java.awt.Color(51, 51, 255));
+        btnIniciarPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIniciarPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnIniciarPanelMouseClicked(evt);
@@ -746,6 +764,7 @@ RegistroDAO registro= new RegistroDAO();
         );
 
         btnRegistrarPanel.setBackground(new java.awt.Color(51, 51, 255));
+        btnRegistrarPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegistrarPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRegistrarPanelMouseClicked(evt);
@@ -892,7 +911,7 @@ RegistroDAO registro= new RegistroDAO();
 
     private void btnIniciarPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarPanelMouseEntered
         // TODO add your handling code here:normal=[0,0,51],5  al pasar mause=0,51,209
-        Border bordeNuevo = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        Border bordeNuevo = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),2);
         btnIniciarPanel.setBorder(bordeNuevo);
         btnIniciarPanel.setBackground(new java.awt.Color(0,51,209));
         
@@ -913,7 +932,7 @@ RegistroDAO registro= new RegistroDAO();
 
     private void btnRegistrarPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarPanelMouseEntered
         // TODO add your handling code here:
-        Border bordeNormal = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        Border bordeNormal = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),2);
         btnRegistrarPanel.setBorder(bordeNormal);
         btnRegistrarPanel.setBackground(new java.awt.Color(0,51,209));
                
@@ -935,7 +954,7 @@ RegistroDAO registro= new RegistroDAO();
 
     private void btnAtrasPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAtrasPanelMouseEntered
         // TODO add your handling code here:
-        Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),2);
         btnAtrasPanel.setBackground(new java.awt.Color(0,51,209));
         btnAtrasPanel.setBorder(nuevoBorte);
     }//GEN-LAST:event_btnAtrasPanelMouseEntered
@@ -949,9 +968,9 @@ RegistroDAO registro= new RegistroDAO();
 
     private void btnPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanel2MouseClicked
         // TODO add your handling code here:
+        
         registrarEstudiante();
-      Estudiante.dispose();
-      Registro.dispose();
+     
     }//GEN-LAST:event_btnPanel2MouseClicked
 
     private void btnPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanel1MouseClicked
@@ -961,7 +980,7 @@ RegistroDAO registro= new RegistroDAO();
 
     private void btnPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanel1MouseEntered
         // TODO add your handling code here:
-          Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+          Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),2);
            btnPanel1.setBackground(new java.awt.Color(0,51,209));
             btnPanel1.setBorder(nuevoBorte);
     }//GEN-LAST:event_btnPanel1MouseEntered
@@ -975,7 +994,7 @@ RegistroDAO registro= new RegistroDAO();
 
     private void btnPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanel2MouseEntered
         // TODO add your handling code here:
-        Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),2);
         btnPanel2.setBackground(new java.awt.Color(0,51,209));
         btnPanel2.setBorder(nuevoBorte);
     }//GEN-LAST:event_btnPanel2MouseEntered
@@ -991,8 +1010,7 @@ RegistroDAO registro= new RegistroDAO();
         // TODO add your handling code here:
          registrarProfesor();
 
-        Profesor.dispose();
-        Registro.dispose();
+       
     }//GEN-LAST:event_btnPanelRegistrar5MouseClicked
 
     private void btnPanelRegresar4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanelRegresar4MouseClicked
@@ -1002,7 +1020,7 @@ RegistroDAO registro= new RegistroDAO();
 
     private void btnPanelRegistrar5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanelRegistrar5MouseEntered
         // TODO add your handling code here:
-         Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+         Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),2);
         btnPanelRegistrar5.setBackground(new java.awt.Color(0,51,209));
         btnPanelRegistrar5.setBorder(nuevoBorte);
     }//GEN-LAST:event_btnPanelRegistrar5MouseEntered
@@ -1016,7 +1034,7 @@ RegistroDAO registro= new RegistroDAO();
 
     private void btnPanelRegresar4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPanelRegresar4MouseEntered
         // TODO add your handling code here:
-         Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+         Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),2);
         btnPanelRegresar4.setBackground(new java.awt.Color(0,51,209));
         btnPanelRegresar4.setBorder(nuevoBorte);
     }//GEN-LAST:event_btnPanelRegresar4MouseEntered
@@ -1031,13 +1049,12 @@ RegistroDAO registro= new RegistroDAO();
     private void BTNregistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNregistrarMouseClicked
         // TODO add your handling code here:
         registrarBienestar();
-        BienestarDialogo.dispose();
-        Registro.dispose();
+        
     }//GEN-LAST:event_BTNregistrarMouseClicked
 
     private void BTNregistrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNregistrarMouseEntered
         // TODO add your handling code here:
-        Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),2);
         BTNregistrar.setBackground(new java.awt.Color(0,51,209));
         BTNregistrar.setBorder(nuevoBorte);
     }//GEN-LAST:event_BTNregistrarMouseEntered
@@ -1056,7 +1073,7 @@ RegistroDAO registro= new RegistroDAO();
 
     private void btnREGRESARMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnREGRESARMouseEntered
         // TODO add your handling code here:
-        Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),2);
         btnREGRESAR.setBackground(new java.awt.Color(0,51,209));
         btnREGRESAR.setBorder(nuevoBorte);
     }//GEN-LAST:event_btnREGRESARMouseEntered
@@ -1114,8 +1131,6 @@ RegistroDAO registro= new RegistroDAO();
     private javax.swing.JPanel btnPanel1;
     private javax.swing.JPanel btnPanel2;
     private javax.swing.JPanel btnPanelRegistrar5;
-    private javax.swing.JPanel btnPanelRegistrar6;
-    private javax.swing.JPanel btnPanelRegistrar7;
     private javax.swing.JPanel btnPanelRegresar4;
     private javax.swing.JPanel btnREGRESAR;
     private javax.swing.JPanel btnRegistrarPanel;
@@ -1132,8 +1147,6 @@ RegistroDAO registro= new RegistroDAO();
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1166,7 +1179,7 @@ RegistroDAO registro= new RegistroDAO();
     private javax.swing.JTextField txtProgramaprofesor;
     private javax.swing.JTextField txtSemestreestudiante;
     // End of variables declaration//GEN-END:variables
-
+  
     public void combo(){
         String selecion = comboTipoUsuario.getSelectedItem().toString();
         if(selecion.equals("estudiante")){
@@ -1189,90 +1202,237 @@ RegistroDAO registro= new RegistroDAO();
             Profesor.setLocationRelativeTo(null);        
         }
     }
-public void registrarEstudiante(){
+public void registrarEstudiante() {
+    
+    if (txtIDestudiante.getText().isEmpty() || txtNombreestudiante.getText().isEmpty() || 
+        txtGmailestudiante.getText().isEmpty() || txtApellidoestudiante.getText().isEmpty() || 
+        txtCelularestudiante.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", 
+            "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    
+    if (!numeroValidator.esNumeroConLongitud(txtIDestudiante.getText(), 10)) {
+        JOptionPane.showMessageDialog(this, "El ID debe contener 10 dígitos numéricos", 
+            "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+   
+    if (!emailValidator.esEmailValido(txtGmailestudiante.getText())) {
+        JOptionPane.showMessageDialog(this, "El email no tiene un formato válido", 
+            "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    
+    if (!letrasValidator.contieneSoloLetras(txtNombreestudiante.getText()) || 
+        !letrasValidator.contieneSoloLetras(txtApellidoestudiante.getText())) {
+        JOptionPane.showMessageDialog(this, "Nombre y apellido solo deben contener letras", 
+            "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+   
+    if (!numeroValidator.esNumeroValido(txtCelularestudiante.getText()) || 
+        txtCelularestudiante.getText().length() < 10) {
+        JOptionPane.showMessageDialog(this, "El teléfono debe contener al menos 10 dígitos", 
+            "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+   
     Estudiante estudiante = new Estudiante();
+    estudiante.setId(txtIDestudiante.getText());
+    estudiante.setNombre(txtNombreestudiante.getText());
+    estudiante.setGmail(txtGmailestudiante.getText());
+    estudiante.setApellido(txtApellidoestudiante.getText());
+    estudiante.setNumeroTelefonico(txtCelularestudiante.getText());
+    estudiante.setGenero(comboboxGeneroEstudiantee.getSelectedItem().toString());
+    estudiante.setFacultad(txtFacultadestudiante.getText());
+    estudiante.setSemestre(txtSemestreestudiante.getText());
+    estudiante.setPrograma(txtProgramaestudiante.getText());
+    estudiante.setTipoUsuario("ESTUDIANTE");
+   
+    registro.registrarEstudiante(estudiante);
+    JOptionPane.showMessageDialog(this, "Estudiante registrado con éxito", 
+        "Éxito", JOptionPane.INFORMATION_MESSAGE);
     
-   
-   estudiante.setId(txtIDestudiante.getText());
-   estudiante.setNombre(txtNombreestudiante.getText());
-   estudiante.setGmail(txtGmailestudiante.getText());
-   estudiante.setApellido(txtApellidoestudiante.getText());
-   estudiante.setNumeroTelefonico(txtCelularestudiante.getText());
-   estudiante.setGenero(comboboxGeneroEstudiantee.getSelectedItem().toString());
-   estudiante.setFacultad(txtFacultadestudiante.getText());
-   estudiante.setSemestre(txtSemestreestudiante.getText());
-   estudiante.setPrograma(txtProgramaestudiante.getText());
-   estudiante.setTipoUsuario("ESTUDIANTE");
-   
-   registro.registrarEstudiante(estudiante);
+        Estudiante.dispose();
+        Registro.dispose();
 }
-public void registrarProfesor(){
-    Profesor profesor = new Profesor();
+public void registrarProfesor() {
+   
+    if (txtIDprofesor.getText().isEmpty() || txtNombreprofesor.getText().isEmpty() || 
+        txtGmailprofesor.getText().isEmpty() || txtApellidoprofesor.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", 
+            "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
     
+    if (!numeroValidator.esNumeroConLongitud(txtIDprofesor.getText(), 10)) {
+        JOptionPane.showMessageDialog(this, "El ID debe contener 10 dígitos numéricos", 
+            "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+   
+    if (!emailValidator.esEmailValido(txtGmailprofesor.getText())) {
+        JOptionPane.showMessageDialog(this, "El email no tiene un formato válido", 
+            "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+   
+    if (!letrasValidator.contieneSoloLetras(txtNombreprofesor.getText()) || 
+        !letrasValidator.contieneSoloLetras(txtApellidoprofesor.getText())) {
+        JOptionPane.showMessageDialog(this, "Nombre y apellido solo deben contener letras", 
+            "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    if (!txtCelularprofesor.getText().isEmpty() && 
+        (!numeroValidator.esNumeroValido(txtCelularprofesor.getText()) || 
+         txtCelularprofesor.getText().length() < 10)) {
+        JOptionPane.showMessageDialog(this, "El teléfono debe contener al menos 10 dígitos", 
+            "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    
+    Profesor profesor = new Profesor();
     profesor.setApellido(txtApellidoprofesor.getText());
     profesor.setNombre(txtNombreprofesor.getText());
     profesor.setId(txtIDprofesor.getText());
     profesor.setGmail(txtGmailprofesor.getText());
     profesor.setNumeroTelefonico(txtCelularprofesor.getText());
-    profesor.setGenero(comboBoxGeneroProfesor.getSelectedItem().toString()); // nuevo
+    profesor.setGenero(comboBoxGeneroProfesor.getSelectedItem().toString());
     profesor.setTipoUsuario("PROFESOR");
     profesor.setFacultad(txtFacultadprofesor.getText());
     profesor.setProfesion(txtProfesionprofesor.getText());
     profesor.setPrograma(txtProgramaprofesor.getText());
     
     registro.registrarProfesor(profesor);
-    
+    JOptionPane.showMessageDialog(this, "Profesor registrado con éxito", 
+        "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            
+        Profesor.dispose();
+        Registro.dispose();
 }
-public void registrarBienestar(){
-Bienestar bienestar=new Bienestar();
+public void registrarBienestar() {
+   
+    if (txtIDbienestar.getText().isEmpty() || txtNombrebienestar.getText().isEmpty() || 
+        txtGmailbienestar.getText().isEmpty() || txtApellidobienestar.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", 
+            "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
-bienestar.setId(txtIDbienestar.getText());
-bienestar.setApellido(txtApellidobienestar.getText());
-bienestar.setNombre(txtNombrebienestar.getText());
-bienestar.setDepartamento(txtDepartamentobienestar.getText());
-bienestar.setDireccion(txtDireccionbienestar.getText());
-bienestar.setGenero(comoboBoxGeneroBienestar.getSelectedItem().toString()); //nuevo
-bienestar.setGmail(txtGmailbienestar.getText());
-bienestar.setNumeroTelefonico(txtCelularbienestar.getText());
-bienestar.setOficio(txtOficionbienestar.getText());
-bienestar.setTipoUsuario("BIENESTAR");
+    
+    if (!numeroValidator.esNumeroConLongitud(txtIDbienestar.getText(), 10)) {
+        JOptionPane.showMessageDialog(this, "El ID debe contener 10 dígitos numéricos", 
+            "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
-registro.registrarBienestar(bienestar);
+    
+    if (!emailValidator.esEmailValido(txtGmailbienestar.getText())) {
+        JOptionPane.showMessageDialog(this, "El email no tiene un formato válido", 
+            "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+   
+    if (!letrasValidator.contieneSoloLetras(txtNombrebienestar.getText()) || 
+        !letrasValidator.contieneSoloLetras(txtApellidobienestar.getText())) {
+        JOptionPane.showMessageDialog(this, "Nombre y apellido solo deben contener letras", 
+            "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    
+    if (!txtCelularbienestar.getText().isEmpty() && 
+        (!numeroValidator.esNumeroValido(txtCelularbienestar.getText()) || 
+         txtCelularbienestar.getText().length() < 10)) {
+        JOptionPane.showMessageDialog(this, "El teléfono debe contener al menos 10 dígitos", 
+            "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    
+    Bienestar bienestar = new Bienestar();
+    bienestar.setId(txtIDbienestar.getText());
+    bienestar.setApellido(txtApellidobienestar.getText());
+    bienestar.setNombre(txtNombrebienestar.getText());
+    bienestar.setDepartamento(txtDepartamentobienestar.getText());
+    bienestar.setDireccion(txtDireccionbienestar.getText());
+    bienestar.setGenero(comoboBoxGeneroBienestar.getSelectedItem().toString());
+    bienestar.setGmail(txtGmailbienestar.getText());
+    bienestar.setNumeroTelefonico(txtCelularbienestar.getText());
+    bienestar.setOficio(txtOficionbienestar.getText());
+    bienestar.setTipoUsuario("BIENESTAR");
+
+    registro.registrarBienestar(bienestar);
+    JOptionPane.showMessageDialog(this, "Personal de bienestar registrado con éxito", 
+        "Éxito", JOptionPane.INFORMATION_MESSAGE);
+    
+        BienestarDialogo.dispose();
+        Registro.dispose();
 }
  private void login() {
-        String email = txtGmailLogin.getText().trim();
-        String password = txtIDLogin.getText().trim();
+    String email = txtGmailLogin.getText().trim();
+    String password = txtIDLogin.getText().trim();
 
-        if (email.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor ingrese email y contraseña", 
-                "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        LoginDAO loginDAO=new LoginDAO();
-        Usuario usuario = loginDAO.autenticarUsuario(email, password);
-        if (usuario != null) {
-            JOptionPane.showMessageDialog(this, 
-                "Bienvenido " + usuario.getNombre() + " " + usuario.getApellido() + 
-                "\nTipo de usuario: " + usuario.getTipoUsuario(), 
-                "Autenticación exitosa", JOptionPane.INFORMATION_MESSAGE);
-            if (usuario.getTipoUsuario().equals("Estudiante")){
-             new EstudianteProfesor().setVisible(true);
-             this.dispose();
-            }else if(usuario.getTipoUsuario().equals("Bienestar")){
+    
+    if (email.isEmpty() || password.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor ingrese email y contraseña", 
+            "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    
+    if (!emailValidator.esEmailValido(email)) {
+        JOptionPane.showMessageDialog(this, "El email no tiene un formato válido", 
+            "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+   
+    if (!numeroValidator.esNumeroValido(password)) {
+        JOptionPane.showMessageDialog(this, "La contraseña debe ser numérica", 
+            "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    LoginDAO loginDAO = new LoginDAO();
+    Usuario usuario = loginDAO.autenticarUsuario(email, password);
+    
+    if (usuario != null) {
+        JOptionPane.showMessageDialog(this, 
+            "Bienvenido " + usuario.getNombre() + " " + usuario.getApellido() + 
+            "\nTipo de usuario: " + usuario.getTipoUsuario(), 
+            "Autenticación exitosa", JOptionPane.INFORMATION_MESSAGE);
+        
+        if (usuario.getTipoUsuario().equalsIgnoreCase("Estudiante")) {
+            new EstudianteProfesor().setVisible(true);
+            this.dispose();
+        } else if (usuario.getTipoUsuario().equalsIgnoreCase("Bienestar")) {
             new BienvenidoBienestar().setVisible(true);
-                         this.dispose();
-
-            
-        } else if (usuario.getTipoUsuario().equals("Profesor")){
+            this.dispose();
+        } else if (usuario.getTipoUsuario().equalsIgnoreCase("Profesor")) {
             new ProfesorInterfas().setVisible(true);
             this.dispose();
-        }else {
-            JOptionPane.showMessageDialog(this, 
-                "Credenciales incorrectas o usuario no existe", 
-                "Error de autenticación", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, 
+            "Credenciales incorrectas o usuario no existe", 
+            "Error de autenticación", JOptionPane.ERROR_MESSAGE);
+        }
     }
- }
-}
+
+   
 }
 
 
