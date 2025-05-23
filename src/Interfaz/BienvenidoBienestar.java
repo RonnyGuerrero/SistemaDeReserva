@@ -19,6 +19,7 @@ public class BienvenidoBienestar extends javax.swing.JFrame {
     public BienvenidoBienestar() {
         initComponents();
         setLocationRelativeTo(null);
+          setResizable(false);
     }
 
     /**
@@ -43,10 +44,11 @@ public class BienvenidoBienestar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "BIENVENIDO AL GESTOR DE SOLICITUDES DE EVENTOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "BIENVENIDO AL GESTOR DE SOLICITUDES DE EVENTOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(0, 0, 0));
 
-        bonotnPanel.setBackground(new java.awt.Color(0, 0, 204));
+        bonotnPanel.setBackground(new java.awt.Color(51, 51, 255));
         bonotnPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bonotnPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -81,7 +83,7 @@ public class BienvenidoBienestar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        botonPanel2.setBackground(new java.awt.Color(0, 0, 204));
+        botonPanel2.setBackground(new java.awt.Color(51, 51, 255));
         botonPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         botonPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -122,6 +124,7 @@ public class BienvenidoBienestar extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/profesor (1).png"))); // NOI18N
 
         jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(153, 255, 255));
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
@@ -162,8 +165,9 @@ public class BienvenidoBienestar extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(botonPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -199,8 +203,8 @@ public class BienvenidoBienestar extends javax.swing.JFrame {
 
     private void bonotnPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bonotnPanelMouseExited
         // TODO add your handling code here:
-        bonotnPanel.setBackground(new java.awt.Color(0,0,204));
-        Border borde = BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 1);
+        bonotnPanel.setBackground(new java.awt.Color(51,51,255));
+        Border borde = BorderFactory.createLineBorder(new java.awt.Color(51,51,255), 1);
         bonotnPanel.setBorder(borde);
     }//GEN-LAST:event_bonotnPanelMouseExited
 
@@ -219,8 +223,8 @@ public class BienvenidoBienestar extends javax.swing.JFrame {
 
     private void botonPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonPanel2MouseExited
         // TODO add your handling code here:
-        botonPanel2.setBackground(new java.awt.Color(0,0,204));
-        Border borde = BorderFactory.createLineBorder(new java.awt.Color(0,0,204),1);
+        botonPanel2.setBackground(new java.awt.Color(51,51,255));
+        Border borde = BorderFactory.createLineBorder(new java.awt.Color(51,51,255),1);
         botonPanel2.setBorder(borde);
     }//GEN-LAST:event_botonPanel2MouseExited
 
