@@ -4,15 +4,21 @@
  */
 package Interfaz;
 import Model.*;
-
-import Model.*;
+import Model.Evento;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -26,7 +32,7 @@ import javax.swing.table.DefaultTableModel;
 public class BienestarInterfaz extends javax.swing.JFrame {
       private List<Evento> listaEventos;
       private Evento eventoSeleccionado;
-      private static final String DIRECTORIO_EVENTOS = "C:/Users/elise/OneDrive/Desktop/reservas/";
+      private static final String DIRECTORIO_EVENTO = "C:/Users/Usuario/Desktop/reservaEstudiante/";
     /**
      * Creates new form Bienestar
      */
@@ -37,7 +43,7 @@ public class BienestarInterfaz extends javax.swing.JFrame {
         cargarEventosDesdeArchivo();
     }
     public void cargarEventosDesdeArchivo(){
-        File directorio = new File(DIRECTORIO_EVENTOS);
+        File directorio = new File(DIRECTORIO_EVENTO);
         if (!directorio.exists()){
             directorio.mkdirs();
             return;
@@ -137,7 +143,7 @@ public class BienestarInterfaz extends javax.swing.JFrame {
     }
     
     private void actualizarArchivosEvntos(Evento evento){
-        String nombreArchivo = DIRECTORIO_EVENTOS + evento.getNombreEvento().replaceAll("[^a-zA-Z0-9]", 
+        String nombreArchivo = DIRECTORIO_EVENTO + evento.getNombreEvento().replaceAll("[^a-zA-Z0-9]", 
                 "") + ".txt";
         File archivo = new File(nombreArchivo);
         
@@ -194,6 +200,11 @@ public class BienestarInterfaz extends javax.swing.JFrame {
         comboEstado = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtDescripcionEstado = new javax.swing.JTextArea();
+        Reportes = new javax.swing.JDialog();
+        panelGrafica = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaBienestar = new javax.swing.JTable();
@@ -202,6 +213,8 @@ public class BienestarInterfaz extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         panelBoton2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        btnGenerarReporte = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("DETALLES"));
 
@@ -315,6 +328,71 @@ public class BienestarInterfaz extends javax.swing.JFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        javax.swing.GroupLayout panelGraficaLayout = new javax.swing.GroupLayout(panelGrafica);
+        panelGrafica.setLayout(panelGraficaLayout);
+        panelGraficaLayout.setHorizontalGroup(
+            panelGraficaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelGraficaLayout.setVerticalGroup(
+            panelGraficaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 282, Short.MAX_VALUE)
+        );
+
+        jPanel4.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel4.setText("GENERAR PDF");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(113, 113, 113)
+                .addComponent(jLabel4)
+                .addContainerGap(121, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addContainerGap(9, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(122, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout ReportesLayout = new javax.swing.GroupLayout(Reportes.getContentPane());
+        Reportes.getContentPane().setLayout(ReportesLayout);
+        ReportesLayout.setHorizontalGroup(
+            ReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelGrafica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        ReportesLayout.setVerticalGroup(
+            ReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReportesLayout.createSequentialGroup()
+                .addComponent(panelGrafica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tablaBienestar.setModel(new javax.swing.table.DefaultTableModel(
@@ -358,7 +436,10 @@ public class BienestarInterfaz extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        panelBoton.setBackground(new java.awt.Color(0, 0, 204));
+        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+
+        panelBoton.setBackground(new java.awt.Color(255, 153, 255));
+        panelBoton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panelBoton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -380,20 +461,21 @@ public class BienestarInterfaz extends javax.swing.JFrame {
         panelBoton.setLayout(panelBotonLayout);
         panelBotonLayout.setHorizontalGroup(
             panelBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotonLayout.createSequentialGroup()
-                .addContainerGap(214, Short.MAX_VALUE)
+            .addGroup(panelBotonLayout.createSequentialGroup()
+                .addGap(111, 111, 111)
                 .addComponent(jLabel1)
-                .addGap(233, 233, 233))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
         panelBotonLayout.setVerticalGroup(
             panelBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotonLayout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addContainerGap(40, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(29, 29, 29))
+                .addGap(38, 38, 38))
         );
 
-        panelBoton2.setBackground(new java.awt.Color(0, 0, 204));
+        panelBoton2.setBackground(new java.awt.Color(255, 153, 255));
+        panelBoton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelBoton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panelBoton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -415,17 +497,53 @@ public class BienestarInterfaz extends javax.swing.JFrame {
         panelBoton2.setLayout(panelBoton2Layout);
         panelBoton2Layout.setHorizontalGroup(
             panelBoton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBoton2Layout.createSequentialGroup()
-                .addGap(211, 211, 211)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBoton2Layout.createSequentialGroup()
+                .addContainerGap(136, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addContainerGap(234, Short.MAX_VALUE))
+                .addGap(111, 111, 111))
         );
         panelBoton2Layout.setVerticalGroup(
             panelBoton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBoton2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(26, 26, 26))
+                .addGap(36, 36, 36))
+        );
+
+        btnGenerarReporte.setBackground(new java.awt.Color(255, 153, 255));
+        btnGenerarReporte.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnGenerarReporte.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGenerarReporte.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGenerarReporteMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnGenerarReporteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGenerarReporteMouseExited(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("GENERAR REPORTE");
+
+        javax.swing.GroupLayout btnGenerarReporteLayout = new javax.swing.GroupLayout(btnGenerarReporte);
+        btnGenerarReporte.setLayout(btnGenerarReporteLayout);
+        btnGenerarReporteLayout.setHorizontalGroup(
+            btnGenerarReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnGenerarReporteLayout.createSequentialGroup()
+                .addContainerGap(59, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(57, 57, 57))
+        );
+        btnGenerarReporteLayout.setVerticalGroup(
+            btnGenerarReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnGenerarReporteLayout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(35, 35, 35))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -435,17 +553,21 @@ public class BienestarInterfaz extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelBoton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(93, 93, 93)
                 .addComponent(panelBoton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(60, 60, 60)
+                .addComponent(btnGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 16, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelBoton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelBoton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnGenerarReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(panelBoton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelBoton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -530,7 +652,7 @@ public class BienestarInterfaz extends javax.swing.JFrame {
             return;
         }
         String nombreEvento = tablaBienestar.getValueAt(selectedRow, 1).toString();
-        String nombreArchivo = DIRECTORIO_EVENTOS + nombreEvento.replaceAll("[^a-zA-Z0-9]", "-") + ".txt";
+        String nombreArchivo = DIRECTORIO_EVENTO + nombreEvento.replaceAll("[^a-zA-Z0-9]", "-") + ".txt";
 
         File archivo = new File(nombreArchivo);
         if (archivo.exists()){
@@ -543,17 +665,26 @@ public class BienestarInterfaz extends javax.swing.JFrame {
 
     private void panelBoton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBoton2MouseEntered
         // TODO add your handling code here:normal=[0,0,51] [0,0,204][0,51,204] al pasar mause=0,51,209
-        Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
-        panelBoton2.setBackground(new java.awt.Color(0,51,209));
-        panelBoton2.setBorder(nuevoBorte);
+        panelBoton2.setBackground(Color.MAGENTA);
     }//GEN-LAST:event_panelBoton2MouseEntered
 
     private void panelBoton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBoton2MouseExited
         // TODO add your handling code here:
-        Border borde =BorderFactory.createLineBorder(new java.awt.Color(0,0,204),1);
-        panelBoton2.setBorder(borde);
-        panelBoton2.setBackground(new java.awt.Color(0,0,204));
+        panelBoton2.setBackground(new java.awt.Color(204,153,255));
     }//GEN-LAST:event_panelBoton2MouseExited
+
+    private void btnGenerarReporteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReporteMouseClicked
+generarReporte();
+    }//GEN-LAST:event_btnGenerarReporteMouseClicked
+
+    private void btnGenerarReporteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReporteMouseEntered
+btnGenerarReporte.setBackground(Color.MAGENTA);
+    }//GEN-LAST:event_btnGenerarReporteMouseEntered
+
+    private void btnGenerarReporteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReporteMouseExited
+       btnGenerarReporte.setBackground(new java.awt.Color(204,153,255));
+
+    }//GEN-LAST:event_btnGenerarReporteMouseExited
 
     /**
      * @param args the command line arguments
@@ -593,19 +724,26 @@ public class BienestarInterfaz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog Detalles;
+    private javax.swing.JDialog Reportes;
+    private javax.swing.JPanel btnGenerarReporte;
     private javax.swing.JComboBox<String> comboEstado;
     private javax.swing.JTextField fechaCierreEstdo;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel panelBoton;
     private javax.swing.JPanel panelBoton2;
+    private javax.swing.JPanel panelGrafica;
     private javax.swing.JTable tablaBienestar;
     private javax.swing.JTextArea txtDescripcionEstado;
     private javax.swing.JTextField txtEventoEstado;
@@ -614,4 +752,132 @@ public class BienestarInterfaz extends javax.swing.JFrame {
     private javax.swing.JTextField txtNOmbreEstado;
     private javax.swing.JTextField txtfehcInicioEstado;
     // End of variables declaration//GEN-END:variables
+
+    private void generarReporte() {
+         if (listaEventos.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "No hay eventos registrados para generar el reporte", 
+                "Advertencia", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    // Crear el directorio de reportes si no existe
+    String directorioReportes = DIRECTORIO_EVENTO + "reportes/";
+    File carpetaReportes = new File(directorioReportes);
+    if (!carpetaReportes.exists()) {
+        carpetaReportes.mkdirs();
+    }
+
+    // Crear nombre de archivo con fecha y hora actual
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+    String nombreArchivo = directorioReportes + "reporte_eventos_" + sdf.format(new Date()) + ".pdf";
+
+    Document document = new Document();
+    try {
+        // Crear el archivo PDF
+        PdfWriter.getInstance(document, new FileOutputStream(nombreArchivo));
+        document.open();
+
+        // Título del reporte
+        Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.BLUE);
+        Paragraph title = new Paragraph("Reporte de Eventos - Bienestar Universitario", titleFont);
+        title.setAlignment(Element.ALIGN_CENTER);
+        title.setSpacingAfter(20);
+        document.add(title);
+
+        // Fecha de generación
+        Font dateFont = FontFactory.getFont(FontFactory.HELVETICA, 12, BaseColor.BLACK);
+        Paragraph date = new Paragraph("Generado el: " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date()), dateFont);
+        date.setAlignment(Element.ALIGN_RIGHT);
+        date.setSpacingAfter(20);
+        document.add(date);
+
+        // Crear tabla para los datos
+        PdfPTable table = new PdfPTable(7); // 7 columnas
+        table.setWidthPercentage(100);
+        table.setSpacingBefore(10f);
+        table.setSpacingAfter(10f);
+
+        // Encabezados de la tabla
+        String[] headers = {"ID", "Usuario", "Evento", "Fecha Solicitud", "Fecha Inicio", "Descripción", "Estado"};
+        Font headerFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.WHITE);
+
+        for (String header : headers) {
+            PdfPCell cell = new PdfPCell(new Phrase(header, headerFont));
+            cell.setBackgroundColor(new BaseColor(0, 102, 204)); // Azul oscuro
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setPadding(5);
+            table.addCell(cell);
+        }
+
+        // Llenar la tabla con datos
+        Font dataFont = FontFactory.getFont(FontFactory.HELVETICA, 10, BaseColor.BLACK);
+        SimpleDateFormat fechaFormat = new SimpleDateFormat("yyyy-MM-dd");
+        int id = 1;
+
+        for (Evento evento : listaEventos) {
+            // ID
+            table.addCell(new Phrase(String.valueOf(id++), dataFont));
+            
+            // Usuario
+            table.addCell(new Phrase(evento.getNombreuUsuario() != null ? evento.getNombreuUsuario() : "", dataFont));
+            
+            // Evento
+            table.addCell(new Phrase(evento.getNombreEvento(), dataFont));
+            
+            // Fecha Solicitud
+            table.addCell(new Phrase(evento.getFechaCreada(), dataFont));
+            
+            // Fecha Inicio
+            String fechaInicio = evento.getFechaInicio() != null ? fechaFormat.format(evento.getFechaInicio()) : "";
+            table.addCell(new Phrase(fechaInicio, dataFont));
+            
+            // Descripción (limitamos a 50 caracteres para no hacer la celda muy grande)
+            String descripcion = evento.getDescripcion() != null ? 
+                (evento.getDescripcion().length() > 50 ? evento.getDescripcion().substring(0, 47) + "..." : evento.getDescripcion()) : "";
+            table.addCell(new Phrase(descripcion, dataFont));
+            
+            // Estado (con color según estado)
+            PdfPCell estadoCell = new PdfPCell(new Phrase(evento.getEstado(), dataFont));
+            estadoCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            
+            // Colores según estado
+            switch(evento.getEstado().toLowerCase()) {
+                case "aprobada":
+                    estadoCell.setBackgroundColor(new BaseColor(144, 238, 144)); // Verde claro
+                    break;
+                case "rechazada":
+                    estadoCell.setBackgroundColor(new BaseColor(255, 102, 102)); // Rojo claro
+                    break;
+                case "pendiente":
+                    estadoCell.setBackgroundColor(new BaseColor(255, 255, 153)); // Amarillo claro
+                    break;
+                default:
+                    estadoCell.setBackgroundColor(BaseColor.WHITE);
+            }
+            
+            table.addCell(estadoCell);
+        }
+
+        document.add(table);
+
+        // Total de eventos
+        Paragraph total = new Paragraph("Total de eventos: " + listaEventos.size(), 
+                FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.BLACK));
+        total.setAlignment(Element.ALIGN_RIGHT);
+        total.setSpacingBefore(10f);
+        document.add(total);
+
+        JOptionPane.showMessageDialog(null, "Reporte PDF generado exitosamente en:\n" + nombreArchivo, 
+                "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+    } catch (DocumentException | IOException e) {
+        JOptionPane.showMessageDialog(null, "Error al generar el reporte PDF: " + e.getMessage(), 
+                "Error", JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace();
+    } finally {
+        if (document != null && document.isOpen()) {
+            document.close();
+        }
+    }
+    }
 }

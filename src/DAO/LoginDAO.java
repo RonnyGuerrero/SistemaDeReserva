@@ -10,9 +10,9 @@ public class LoginDAO {
     
     private static final Map<String,String> DIRECTORIOS = new HashMap<>();
     static {
-    DIRECTORIOS.put("ESTUDIANTE", "C:/Users/elise/OneDrive/Desktop/estudiante/");
-    DIRECTORIOS.put("PROFESOR", "C:/Users/elise/OneDrive/Desktop/profesor/");
-    DIRECTORIOS.put("BIENESTAR", "C:/Users/elise/OneDrive/Desktop/bienestar/");
+    DIRECTORIOS.put("ESTUDIANTE", "C:/Users/Usuario/Desktop/Estudiante/");
+    DIRECTORIOS.put("PROFESOR", "C:/Users/Usuario/Desktop/Profesor/");
+    DIRECTORIOS.put("BIENESTAR", "C:/Users/Usuario/Desktop/Bienestar/");
 
     }
     

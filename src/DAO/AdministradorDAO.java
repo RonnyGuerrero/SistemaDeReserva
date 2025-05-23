@@ -4,6 +4,7 @@
  */
 package DAO;
 
+import Model.Evento;
 import Model.Reporte;
 import Model.reservarCancha;
 import java.util.List;
@@ -13,23 +14,10 @@ import java.util.List;
  * @author Usuario
  */
 public class AdministradorDAO {
-     public List<reservarCancha> verReservas() {
-        // Lógica para ver reservas
-        return null;
-    }
+    
 
-    public boolean modificarReservas(reservarCancha reserva) {
-        // Lógica para modificar reservas
-        return true;
-    }
-
-    public boolean aprobarSolicitud(reservarCancha reserva) {
-        // Lógica para aprobar solicitud
-        return true;
-    }
-
-    public Reporte generarReporte() {
-        // Lógica para generar reporte
+    public Reporte generarReporte(Evento evento) {
+        
         return new Reporte();
     }
 

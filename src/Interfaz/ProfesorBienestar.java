@@ -5,13 +5,20 @@
 package Interfaz;
 
 import Model.Evento;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -27,7 +34,7 @@ public class ProfesorBienestar extends javax.swing.JFrame {
 
     private List<Evento> listaEventos;
       private Evento eventoSeleccionado;
-      private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop/reservaProfesor/";
+      private static final String DIRECTORIO_EVENTO = "C:/Users/Usuario/Desktop/reservaProfesor/";
       
     /**
      * Creates new form ProfesorBienestar
@@ -69,6 +76,8 @@ public class ProfesorBienestar extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         panelBoton2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        panelBoton3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         txtIdEstado.setEditable(false);
         txtIdEstado.setBorder(javax.swing.BorderFactory.createTitledBorder("ID"));
@@ -224,7 +233,7 @@ public class ProfesorBienestar extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        panelBoton.setBackground(new java.awt.Color(0, 0, 204));
+        panelBoton.setBackground(new java.awt.Color(0, 153, 255));
         panelBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panelBoton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -246,20 +255,20 @@ public class ProfesorBienestar extends javax.swing.JFrame {
         panelBoton.setLayout(panelBotonLayout);
         panelBotonLayout.setHorizontalGroup(
             panelBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotonLayout.createSequentialGroup()
-                .addContainerGap(214, Short.MAX_VALUE)
+            .addGroup(panelBotonLayout.createSequentialGroup()
+                .addGap(115, 115, 115)
                 .addComponent(jLabel1)
-                .addGap(233, 233, 233))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         panelBotonLayout.setVerticalGroup(
             panelBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBotonLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotonLayout.createSequentialGroup()
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(36, 36, 36))
         );
 
-        panelBoton2.setBackground(new java.awt.Color(0, 0, 204));
+        panelBoton2.setBackground(new java.awt.Color(51, 204, 255));
         panelBoton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panelBoton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -281,17 +290,52 @@ public class ProfesorBienestar extends javax.swing.JFrame {
         panelBoton2.setLayout(panelBoton2Layout);
         panelBoton2Layout.setHorizontalGroup(
             panelBoton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBoton2Layout.createSequentialGroup()
-                .addContainerGap(218, Short.MAX_VALUE)
+            .addGroup(panelBoton2Layout.createSequentialGroup()
+                .addGap(114, 114, 114)
                 .addComponent(jLabel2)
-                .addGap(227, 227, 227))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
         panelBoton2Layout.setVerticalGroup(
             panelBoton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBoton2Layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
+            .addGroup(panelBoton2Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
                 .addComponent(jLabel2)
-                .addGap(41, 41, 41))
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        panelBoton3.setBackground(new java.awt.Color(153, 204, 255));
+        panelBoton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelBoton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelBoton3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelBoton3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelBoton3MouseExited(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("GENERAR REPORTE");
+
+        javax.swing.GroupLayout panelBoton3Layout = new javax.swing.GroupLayout(panelBoton3);
+        panelBoton3.setLayout(panelBoton3Layout);
+        panelBoton3Layout.setHorizontalGroup(
+            panelBoton3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBoton3Layout.createSequentialGroup()
+                .addContainerGap(84, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(82, 82, 82))
+        );
+        panelBoton3Layout.setVerticalGroup(
+            panelBoton3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBoton3Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jLabel3)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -299,20 +343,23 @@ public class ProfesorBienestar extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(26, 26, 26)
                 .addComponent(panelBoton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGap(76, 76, 76)
                 .addComponent(panelBoton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addComponent(panelBoton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelBoton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelBoton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(panelBoton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelBoton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelBoton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -377,17 +424,13 @@ public class ProfesorBienestar extends javax.swing.JFrame {
 
     private void panelBotonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBotonMouseEntered
         // TODO add your handling code here:normal=[0,0,51] [0,0,204][0,51,204] al pasar mause=0,51,209
-        Border bordeNormal =  BorderFactory.createLineBorder(new java.awt.Color(0,0,51), 5);
-        panelBoton.setBackground(new java.awt.Color(0,51,209));
-        panelBoton.setBorder(bordeNormal);
+        panelBoton.setBackground(Color.blue);
         
     }//GEN-LAST:event_panelBotonMouseEntered
 
     private void panelBotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBotonMouseExited
-        // TODO add your handling code here:
-        Border borde = BorderFactory.createLineBorder(new java.awt.Color(0,0,204),1);
-        panelBoton.setBorder(borde);
-        panelBoton.setBackground(new java.awt.Color(0,0,204));
+       
+        panelBoton.setBackground(new java.awt.Color(0,153,255));
     }//GEN-LAST:event_panelBotonMouseExited
 
     private void panelBoton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBoton2MouseClicked
@@ -422,6 +465,21 @@ public class ProfesorBienestar extends javax.swing.JFrame {
         panelBoton2.setBorder(borde);
          panelBoton2.setBackground(new java.awt.Color(0,0,204));
     }//GEN-LAST:event_panelBoton2MouseExited
+
+    private void panelBoton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBoton3MouseClicked
+        generarReporte();
+    }//GEN-LAST:event_panelBoton3MouseClicked
+
+    private void panelBoton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBoton3MouseEntered
+  Border nuevoBorte = BorderFactory.createLineBorder(new java.awt.Color(0,0,51),5);
+        panelBoton2.setBackground(new java.awt.Color(0,51,209));
+        panelBoton2.setBorder(nuevoBorte);    }//GEN-LAST:event_panelBoton3MouseEntered
+
+    private void panelBoton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBoton3MouseExited
+Border borde =BorderFactory.createLineBorder(new java.awt.Color(0,0,204),1);
+        panelBoton2.setBorder(borde);
+         panelBoton2.setBackground(new java.awt.Color(0,0,204));
+    }//GEN-LAST:event_panelBoton3MouseExited
 
     /**
      * @param args the command line arguments
@@ -466,6 +524,7 @@ public class ProfesorBienestar extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -473,6 +532,7 @@ public class ProfesorBienestar extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel panelBoton;
     private javax.swing.JPanel panelBoton2;
+    private javax.swing.JPanel panelBoton3;
     private javax.swing.JTable tablaBienestar;
     private javax.swing.JTextArea txtDescripcionEstado;
     private javax.swing.JTextField txtEventoEstado;
@@ -617,5 +677,133 @@ public class ProfesorBienestar extends javax.swing.JFrame {
             }
         }
         
+    }
+
+    private void generarReporte() {
+         if (listaEventos.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "No hay eventos registrados para generar el reporte", 
+                "Advertencia", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    // Crear el directorio de reportes si no existe
+    String directorioReportes = DIRECTORIO_EVENTO + "reportes/";
+    File carpetaReportes = new File(directorioReportes);
+    if (!carpetaReportes.exists()) {
+        carpetaReportes.mkdirs();
+    }
+
+    // Crear nombre de archivo con fecha y hora actual
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+    String nombreArchivo = directorioReportes + "reporte_eventos_" + sdf.format(new Date()) + ".pdf";
+
+    Document document = new Document();
+    try {
+        // Crear el archivo PDF
+        PdfWriter.getInstance(document, new FileOutputStream(nombreArchivo));
+        document.open();
+
+        // Título del reporte
+        Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.BLUE);
+        Paragraph title = new Paragraph("Reporte de Eventos - Bienestar Universitario", titleFont);
+        title.setAlignment(Element.ALIGN_CENTER);
+        title.setSpacingAfter(20);
+        document.add(title);
+
+        // Fecha de generación
+        Font dateFont = FontFactory.getFont(FontFactory.HELVETICA, 12, BaseColor.BLACK);
+        Paragraph date = new Paragraph("Generado el: " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date()), dateFont);
+        date.setAlignment(Element.ALIGN_RIGHT);
+        date.setSpacingAfter(20);
+        document.add(date);
+
+        // Crear tabla para los datos
+        PdfPTable table = new PdfPTable(7); // 7 columnas
+        table.setWidthPercentage(100);
+        table.setSpacingBefore(10f);
+        table.setSpacingAfter(10f);
+
+        // Encabezados de la tabla
+        String[] headers = {"ID", "Usuario", "Evento", "Fecha Solicitud", "Fecha Inicio", "Descripción", "Estado"};
+        Font headerFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.WHITE);
+
+        for (String header : headers) {
+            PdfPCell cell = new PdfPCell(new Phrase(header, headerFont));
+            cell.setBackgroundColor(new BaseColor(0, 102, 204)); // Azul oscuro
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setPadding(5);
+            table.addCell(cell);
+        }
+
+        // Llenar la tabla con datos
+        Font dataFont = FontFactory.getFont(FontFactory.HELVETICA, 10, BaseColor.BLACK);
+        SimpleDateFormat fechaFormat = new SimpleDateFormat("yyyy-MM-dd");
+        int id = 1;
+
+        for (Evento evento : listaEventos) {
+            // ID
+            table.addCell(new Phrase(String.valueOf(id++), dataFont));
+            
+            // Usuario
+            table.addCell(new Phrase(evento.getNombreuUsuario() != null ? evento.getNombreuUsuario() : "", dataFont));
+            
+            // Evento
+            table.addCell(new Phrase(evento.getNombreEvento(), dataFont));
+            
+            // Fecha Solicitud
+            table.addCell(new Phrase(evento.getFechaCreada(), dataFont));
+            
+            // Fecha Inicio
+            String fechaInicio = evento.getFechaInicio() != null ? fechaFormat.format(evento.getFechaInicio()) : "";
+            table.addCell(new Phrase(fechaInicio, dataFont));
+            
+            // Descripción (limitamos a 50 caracteres para no hacer la celda muy grande)
+            String descripcion = evento.getDescripcion() != null ? 
+                (evento.getDescripcion().length() > 50 ? evento.getDescripcion().substring(0, 47) + "..." : evento.getDescripcion()) : "";
+            table.addCell(new Phrase(descripcion, dataFont));
+            
+            // Estado (con color según estado)
+            PdfPCell estadoCell = new PdfPCell(new Phrase(evento.getEstado(), dataFont));
+            estadoCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            
+            // Colores según estado
+            switch(evento.getEstado().toLowerCase()) {
+                case "aprobada":
+                    estadoCell.setBackgroundColor(new BaseColor(144, 238, 144)); // Verde claro
+                    break;
+                case "rechazada":
+                    estadoCell.setBackgroundColor(new BaseColor(255, 102, 102)); // Rojo claro
+                    break;
+                case "pendiente":
+                    estadoCell.setBackgroundColor(new BaseColor(255, 255, 153)); // Amarillo claro
+                    break;
+                default:
+                    estadoCell.setBackgroundColor(BaseColor.WHITE);
+            }
+            
+            table.addCell(estadoCell);
+        }
+
+        document.add(table);
+
+        // Total de eventos
+        Paragraph total = new Paragraph("Total de eventos: " + listaEventos.size(), 
+                FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.BLACK));
+        total.setAlignment(Element.ALIGN_RIGHT);
+        total.setSpacingBefore(10f);
+        document.add(total);
+
+        JOptionPane.showMessageDialog(null, "Reporte PDF generado exitosamente en:\n" + nombreArchivo, 
+                "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+    } catch (DocumentException | IOException e) {
+        JOptionPane.showMessageDialog(null, "Error al generar el reporte PDF: " + e.getMessage(), 
+                "Error", JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace();
+    } finally {
+        if (document != null && document.isOpen()) {
+            document.close();
+        }
+    }
     }
 }

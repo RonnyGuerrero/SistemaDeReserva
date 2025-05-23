@@ -12,9 +12,9 @@ import javax.swing.JOptionPane;
 
 public class RegistroDAO {
     
-    private static final String DIRECTORIO_ESTUDIANTES = "C:/Users/elise/OneDrive/Desktop/estudiante/";
-    private static final String DIRECTORIO_PROFESORES = "C:/Users/elise/OneDrive/Desktop/profesor/";
-    private static final String DIRECTORIO_BIENESTAR ="C:/Users/elise/OneDrive/Desktop/bienestar/";
+    private static final String DIRECTORIO_ESTUDIANTES = "C:/Users/Usuario/Desktop/Estudiante/";
+    private static final String DIRECTORIO_PROFESORES = "C:/Users/Usuario/Desktop/Profesor/";
+    private static final String DIRECTORIO_BIENESTAR ="C:/Users/Usuario/Desktop/Bienestar/";
 
 
     public boolean registrarEstudiante(Usuario usuario) {
@@ -119,7 +119,7 @@ public class RegistroDAO {
         
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo))) {
             
-            writer.write("=== DATOS DEL ADMIN ===\n");
+            writer.write("=== DATOS DE BIENESTAR ===\n");
             writer.write("ID: " + bienestar.getId() + "\n");
             writer.write("Nombre: " + bienestar.getNombre() + "\n");
             writer.write("Apellido: " + bienestar.getApellido() + "\n");

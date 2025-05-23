@@ -24,7 +24,7 @@ import javax.swing.border.Border;
  * @author elise
  */
 public class ProfesorInterfas extends javax.swing.JFrame {
-private static final String DIRECTORIO_EVENTO = "C:/Users/elise/OneDrive/Desktop/reservaProfesor/";
+private static final String DIRECTORIO_EVENTO = "C:/Users/Usuario/Desktop/reservaProfesor/";   
     /**
      * Creates new form Profesor
      */

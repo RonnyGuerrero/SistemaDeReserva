@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class EstudianteProfesor extends javax.swing.JFrame {
     
-        private static final String DIRECTORIO_EVENTOS = "C:/Users/elise/OneDrive/Desktop/reservas/";
+        private static final String DIRECTORIO_EVENTOS = "C:/Users/Usuario/Desktop/reservaEstudiante/";
          
 
     /**
@@ -587,4 +587,5 @@ private void limpiarTabla() {
         System.err.println("Error al registrar evento: " + e.getMessage());
     }
 }
+    
 }

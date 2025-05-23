@@ -776,7 +776,7 @@ public void registrarEstudiante(){
     Estudiante estudiante = new Estudiante();
     
    
-   estudiante.setId(txtIDLogin.getText());
+   estudiante.setId(txtIDestudiante.getText());
    estudiante.setNombre(txtNombreestudiante.getText());
    estudiante.setGmail(txtGmailestudiante.getText());
    estudiante.setApellido(txtApellidoestudiante.getText());
@@ -791,7 +791,8 @@ public void registrarEstudiante(){
 }
 public void registrarProfesor(){
     Profesor profesor = new Profesor();
-    
+        
+
     profesor.setApellido(txtApellidoprofesor.getText());
     profesor.setNombre(txtNombreprofesor.getText());
     profesor.setId(txtIDprofesor.getText());
