@@ -1,0 +1,329 @@
+@startuml
+
+    
+    class AdministradorDAO {
+        +List~reservarCancha~ verReservas()
+        +boolean modificarReservas(reservarCancha)
+        +boolean aprobarSolicitud(reservarCancha)
+        +Reporte generarReporte()
+        +boolean gestionarUsuarios()
+    }
+    
+    class CanchaDAO {
+        -String DIRECTORIO
+        +CanchaDAO()
+        +boolean guardarCancha(Cancha)
+        +Cancha obtenerCancha(String)
+        +List~Cancha~ listarCanchasDisponibles()
+        -Cancha leerCanchaDesdeArchivo(File)
+    }
+    
+    class DeporteDAO {
+        -String DIRECTORIO
+        -String ARCHIVO_MAESTRO
+        +DeporteDAO()
+        +boolean registrarDeporte(Deporte)
+        +List~Deporte~ listarTodosDeportes()
+        +Deporte obtenerDeporte(String)
+    }
+    
+    class EventoDAO {
+        -String DIRECTORIO
+        -SimpleDateFormat DATE_FORMAT
+        +boolean crearEvento(Evento)
+        +Evento obtenerEvento(String)
+    }
+    
+    class LoginDAO {
+        -Map~String,String~ DIRECTORIOS
+        +Usuario autenticarUsuario(String, String)
+        -Usuario buscarUsuarioEnDirectorio(String, String, String, String)
+        -Map~String,String~ extraerDatosUsuario(BufferedReader)
+        -Usuario crearUsuarioSegunTipo(String, Map~String,String~)
+        +boolean recuperarContrasena(String)
+    }
+    
+    class RegistroDAO {
+        -String DIRECTORIO_ESTUDIANTES
+        -String DIRECTORIO_PROFESORES
+        -String DIRECTORIO_BIENESTAR
+        +boolean registrarEstudiante(Usuario)
+        +boolean registrarProfesor(Usuario)
+        +boolean registrarBienestar(Usuario)
+    }
+    
+    class ReporteDAO {
+        -String DIRECTORIO
+        -SimpleDateFormat DATE_FORMAT
+        -int contador
+        +ReporteDAO()
+        +String generarReporte(Reporte)
+        +Reporte obtenerReporte(String)
+    }
+    
+    class ReservarDAO {
+        -String DIRECTORIO
+        -SimpleDateFormat DATE_FORMAT
+        -CanchaDAO canchaDAO
+        -UsuarioDAO usuarioDAO
+        +ReservarDAO()
+        +boolean crearReserva(reservarCancha)
+        +List~reservarCancha~ obtenerReservasPorUsuario(String)
+        +List~reservarCancha~ obtenerReservasPorCancha(String)
+        -reservarCancha leerReservaDesdeArchivo(File)
+    }
+    
+    class UsuarioDAO {
+        -Map~Class,String~ DIRECTORIOS
+        -SimpleDateFormat DATE_FORMAT
+        +UsuarioDAO()
+        -void crearDirectorios()
+        +Usuario obtenerUsuarioPorId(String)
+        +Usuario buscarUsuarioPorEmail(String)
+        -Usuario leerUsuarioDeArchivo(File)
+        -Usuario crearUsuarioDesdeDatos(Map~String,String~)
+        -void setDatosBasicos(Usuario, Map~String,String~)
+    }
+    
+    
+    class Usuario {
+        #String id
+        #String nombre
+        #String apellido
+        #String genero
+        #String gmail
+        #String numeroTelefonico
+        #String tipoUsuario
+        +Usuario()
+        +validarEmail() boolean
+    }
+    
+    class Estudiante {
+        -String programa
+        -String semestre
+        -String facultad
+        +getPrograma() String
+        +setPrograma(String)
+        +getSemestre() String
+        +setSemestre(String)
+        +getFacultad() String
+        +setFacultad(String)
+    }
+    
+    class Profesor {
+        -String profesion
+        -String programa
+        -String facultad
+        +getProfesion() String
+        +setProfesion(String)
+        +getPrograma() String
+        +setPrograma(String)
+        +getFacultad() String
+        +setFacultad(String)
+    }
+    
+    class Bienestar {
+        -String direccion
+        -String oficio
+        -String departamento
+        +getDireccion() String
+        +setDireccion(String)
+        +getOficio() String
+        +setOficio(String)
+        +getDepartamento() String
+        +setDepartamento(String)
+    }
+    
+    class Administrador {
+        -String contrasena
+        -nivelAcceso nivel
+        +getContrasena() String
+        +setContrasena(String)
+        +getNivel() nivelAcceso
+        +setNivel(nivelAcceso)
+    }
+    
+    class Cancha {
+        -String idCancha
+        -String nombre
+        -String tipoCancha
+        -int capacidad
+        -boolean disponibilidad
+        -Horario horario
+        -Deporte deporteAsociado
+        +verDisponibilidad(Fecha) boolean
+        +reservarCancha()
+        +liberarCancha()
+    }
+    
+    class Horario {
+        -Map~diaSemana,List~Fecha~~ horariosSemana
+        +Horario()
+        +agregarHorario(diaSemana, Fecha) boolean
+        +removerHorario(diaSemana, Fecha) boolean
+        +consultarDisponibilidad(diaSemana, Fecha) boolean
+        -existeSuperposicion(Fecha, Fecha) boolean
+    }
+    
+    class Fecha {
+        -Date fecha
+        -Time horaInicio
+        -Time horaFin
+        -diaSemana diaSemana
+        +setFecha(Date)
+        +crearRango(Date, Time, Time) Fecha
+    }
+    
+    class reservarCancha {
+        -String idReserva
+        -String dia
+        -String hora
+        -Date fecha
+        -String motivo
+        -estadoReserva estado
+        -Cancha cancha
+        -Usuario usuario
+        +confirmarReserva() boolean
+        +cancelarReserva()
+    }
+    
+    class Evento {
+        -String idEvento
+        -String nombreEvento
+        -Date fechaInicio
+        -String fechaCreada
+        -String nombreuUsuario
+        -String descripcion
+        -String participantes
+        -String estado
+        -Usuario organizador
+        +crearEvento()
+        +modificarEvento()
+        +cancelarEvento()
+    }
+    
+    class Deporte {
+        -String idDeporte
+        -String nombreDeporte
+        -String reglas
+        -int jugadoresRequeridos
+        +asociarCancha(String)
+        +getReglamento() String
+    }
+    
+    class Reporte {
+        -String idReporte
+        -tipoReporte tipo
+        -Date fechaGeneracion
+        -String contenido
+        +generarPDF()
+        +enviarPorCorreo(String) boolean
+    }
+    
+    
+    class GmailValidaciones {
+        +esEmailValido(String) boolean
+    }
+    
+    class letrasValidaciones {
+        +contieneSoloLetras(String) boolean
+    }
+    
+    class numeroValidaciones {
+        +esNumeroValido(String) boolean
+        +esNumeroConLongitud(String, int) boolean
+    }
+    
+    class usuarioValidacion {
+        +esUsuarioValido(String) boolean
+    }
+    
+   
+    class estadoReserva {
+        <<enumeracion>>
+        PENDIENTE
+        APROBADA
+        CONFIRMADA
+        CANCELADA
+        RECHAZADA
+    }
+    
+    class tipoReporte {
+        <<enumeracion>>
+        RESERVAS
+        USUARIOS
+        CANCHAS
+        EVENTOS
+    }
+    
+    class nivelAcceso {
+        <<enumeracion>>
+        BASICO
+        MEDIO
+        ALTO
+        SUPER_ADMIN
+    }
+    
+    class diaSemana {
+        <<enumeracion>>
+        LUNES
+        MARTES
+        MIERCOLES
+        JUEVES
+        VIERNES
+        SABADO
+        DOMINGO
+    }
+    
+   
+    Usuario <|-- Estudiante : herencia
+    Usuario <|-- Profesor : herencia
+    Usuario <|-- Bienestar : herencia
+    Usuario <|-- Administrador : herencia
+    
+    
+    reservarCancha o-- Cancha : tiene
+    reservarCancha o-- Usuario : realizada por
+    Evento o-- Usuario : organizado por
+    Cancha o-- Deporte : asociada a
+    Cancha *-- Horario : contiene
+    Horario o-- Fecha : maneja
+    Fecha o-- diaSemana : tiene
+    Reporte o-- tipoReporte : tipo
+    reservarCancha o-- estadoReserva : estado
+    Administrador o-- nivelAcceso : nivel
+    
+   
+    CanchaDAO ..> Cancha : manipula
+    DeporteDAO ..> Deporte : manipula
+    EventoDAO ..> Evento : manipula
+    EventoDAO ..> UsuarioDAO : usa
+    LoginDAO ..> Usuario : manipula
+    LoginDAO ..> Estudiante : crea
+    LoginDAO ..> Profesor : crea
+    LoginDAO ..> Bienestar : crea
+    RegistroDAO ..> Usuario : manipula
+    RegistroDAO ..> Estudiante : registra
+    RegistroDAO ..> Profesor : registra
+    RegistroDAO ..> Bienestar : registra
+    ReporteDAO ..> Reporte : manipula
+    ReservarDAO ..> reservarCancha : manipula
+    ReservarDAO ..> CanchaDAO : usa
+    ReservarDAO ..> UsuarioDAO : usa
+    UsuarioDAO ..> Usuario : manipula
+    UsuarioDAO ..> Estudiante : manipula
+    UsuarioDAO ..> Profesor : manipula
+    UsuarioDAO ..> Bienestar : manipula
+    UsuarioDAO ..> Administrador : manipula
+    AdministradorDAO ..> reservarCancha : manipula
+    AdministradorDAO ..> Reporte : genera
+    
+   
+    Usuario ..> GmailValidaciones : usa
+    Usuario ..> letrasValidaciones : usa
+    Usuario ..> numeroValidaciones : usa
+    RegistroDAO ..> usuarioValidacion : usa
+    RegistroDAO ..> GmailValidaciones : usa
+    RegistroDAO ..> letrasValidaciones : usa
+    RegistroDAO ..> numeroValidaciones : usa
+@enduml
